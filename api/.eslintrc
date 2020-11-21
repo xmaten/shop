@@ -1,0 +1,27 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "security"],
+  "extends": [
+    "prettier/@typescript-eslint",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:security/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": 0,
+    "arrow-parens": ["error", "always"],
+    "object-curly-spacing": ["error", "always"],
+    "computed-property-spacing": ["error", "never"],
+    "brace-style": ["error", "1tbs"],
+    "jest/expect-expect": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "jest/no-test-callback": 0,
+    "@typescript-eslint/no-empty-function": 0,
+    "security/detect-object-injection": 0,
+    "@typescript-eslint/ban-types": 0
+  }
+}
