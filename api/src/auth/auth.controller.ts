@@ -20,6 +20,7 @@ export class AuthController {
     @Body() registerPayload: RegisterPayloadDto,
     @Req() request: MyRequest,
   ) {
+    console.log('here')
     return this.authService.register(registerPayload, request)
   }
 

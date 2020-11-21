@@ -20,13 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/.env.example" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/api/auth.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/api/httpClient.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/auth/auth.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/auth/auth.controller.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/main.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +71,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605968418690</updated>
-      <workItem from="1605968422015" duration="5290000" />
+      <workItem from="1605968422015" duration="5842000" />
     </task>
     <servers />
   </component>
@@ -98,9 +94,9 @@
       <screen x="1440" y="-249" width="2560" height="1415" />
     </state>
     <state x="1994" y="94" key="SettingsEditor/0.25.1440.875/1440.-249.2560.1415@1440.-249.2560.1415" timestamp="1605968929845" />
-    <state x="2120" y="75" width="670" height="676" key="search.everywhere.popup" timestamp="1605974371221">
+    <state x="2120" y="75" width="670" height="676" key="search.everywhere.popup" timestamp="1605975803769">
       <screen x="1440" y="-249" width="2560" height="1415" />
     </state>
-    <state x="2120" y="75" width="670" height="676" key="search.everywhere.popup/0.25.1440.875/1440.-249.2560.1415@1440.-249.2560.1415" timestamp="1605974371221" />
+    <state x="2120" y="75" width="670" height="676" key="search.everywhere.popup/0.25.1440.875/1440.-249.2560.1415@1440.-249.2560.1415" timestamp="1605975803769" />
   </component>
 </project>
