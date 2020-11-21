@@ -11,8 +11,11 @@ import Box from '@material-ui/core/Box'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 import { useForm } from 'react-hook-form'
+import Router from 'next/router'
 
-type FormInputs = {
+import { authApi } from 'api/auth'
+
+export type RegisterFormInputs = {
   fullName: string
   email: string
   phone: number | null
@@ -32,7 +35,7 @@ const Register = () => {
 
   const classes = useSubmitButtonStyles()
 
-  const { register, handleSubmit, errors, watch } = useForm<FormInputs>({
+  const { register, handleSubmit, errors, watch } = useForm<RegisterFormInputs>({
     defaultValues: {
       fullName: '',
       email: '',
@@ -42,8 +45,14 @@ const Register = () => {
     },
   })
 
-  const onSubmit = handleSubmit((data: FormInputs) => {
-    console.log(data)
+  const onSubmit = handleSubmit(async (data: RegisterFormInputs) => {
+    try {
+      await authApi.register(data)
+
+      Router.push('/')
+    } catch {
+      console.log('error')
+    }
   })
 
   return (
@@ -56,7 +65,6 @@ const Register = () => {
           name="fullName"
           inputRef={register({ required: 'This field is required' })}
           error={!!errors.fullName?.message}
-          helperText={!!errors.fullName?.message}
         />
 
         <TextField
@@ -72,7 +80,6 @@ const Register = () => {
             },
           })}
           error={!!errors.email?.message}
-          helperText={!!errors.email?.message}
         />
 
         <TextField
@@ -82,7 +89,6 @@ const Register = () => {
           name="phone"
           inputRef={register({ required: 'This field is required' })}
           error={!!errors.phone?.message}
-          helperText={!!errors.phone?.message}
         />
 
         <FormControl fullWidth margin="normal">
@@ -96,7 +102,6 @@ const Register = () => {
               required: 'This field is required',
             })}
             error={!!errors.password?.message}
-            helperText={!!errors.password?.message}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton aria-label="toggle password visibility" onClick={() => setShowPassword(!showPassword)}>
@@ -119,7 +124,6 @@ const Register = () => {
               validate: (value) => value === watch('password') || 'Password confirmation does not match password',
             })}
             error={!!errors.passwordConfirmation?.message}
-            helperText={!!errors.passwordConfirmation?.message}
             endAdornment={
               <InputAdornment position="end">
                 <IconButton

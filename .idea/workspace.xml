@@ -20,9 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/pages/register.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/.env.example" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/api/auth.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/api/httpClient.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/register.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +37,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -71,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1605968418690</updated>
-      <workItem from="1605968422015" duration="4837000" />
+      <workItem from="1605968422015" duration="5290000" />
     </task>
     <servers />
   </component>
