@@ -22,7 +22,6 @@ export type LoginFormInputs = {
 const useSubmitButtonStyles = makeStyles({
   root: {
     width: '100%',
-    marginTop: '50px',
   },
 })
 
@@ -31,7 +30,7 @@ const Login = () => {
 
   const classes = useSubmitButtonStyles()
 
-  const { register, handleSubmit, errors, watch } = useForm<LoginFormInputs>({
+  const { register, handleSubmit, errors } = useForm<LoginFormInputs>({
     defaultValues: {
       email: '',
       password: '',
@@ -40,7 +39,7 @@ const Login = () => {
 
   const onSubmit = handleSubmit(async (data: LoginFormInputs) => {
     try {
-      await authApi.register(data)
+      await authApi.login(data)
 
       Router.push('/')
     } catch {

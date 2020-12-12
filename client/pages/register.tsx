@@ -25,7 +25,6 @@ export type RegisterFormInputs = {
 const useSubmitButtonStyles = makeStyles({
   root: {
     width: '100%',
-    marginTop: '50px',
   },
 })
 
@@ -49,7 +48,7 @@ const Register = () => {
     try {
       await authApi.register(data)
 
-      Router.push('/')
+      Router.push('/login')
     } catch {
       console.log('error')
     }
