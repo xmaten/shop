@@ -7,7 +7,6 @@ import IconButton from '@material-ui/core/IconButton'
 import FormControl from '@material-ui/core/FormControl'
 import InputLabel from '@material-ui/core/InputLabel'
 import Input from '@material-ui/core/Input'
-import Box from '@material-ui/core/Box'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 import { useForm } from 'react-hook-form'
@@ -26,6 +25,7 @@ export type RegisterFormInputs = {
 const useSubmitButtonStyles = makeStyles({
   root: {
     width: '100%',
+    marginTop: '50px',
   },
 })
 
@@ -137,11 +137,9 @@ const Register = () => {
           />
         </FormControl>
 
-        <Box m={4}>
-          <Button variant="contained" color="primary" type="submit" className={classes.root}>
-            Submit
-          </Button>
-        </Box>
+        <Button variant="contained" color="primary" type="submit" className={classes.root} fullWidth>
+          Submit
+        </Button>
       </form>
     </Container>
   )
