@@ -14,12 +14,9 @@ import Router from 'next/router'
 
 import { authApi } from 'api/auth'
 
-export type RegisterFormInputs = {
-  fullName: string
+export type LoginFormInputs = {
   email: string
-  phone: number | null
   password: string
-  passwordConfirmation: string
 }
 
 const useSubmitButtonStyles = makeStyles({
@@ -29,23 +26,19 @@ const useSubmitButtonStyles = makeStyles({
   },
 })
 
-const Register = () => {
+const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
-  const [showRepeatPassword, setShowRepeatPassword] = useState(false)
 
   const classes = useSubmitButtonStyles()
 
-  const { register, handleSubmit, errors, watch } = useForm<RegisterFormInputs>({
+  const { register, handleSubmit, errors, watch } = useForm<LoginFormInputs>({
     defaultValues: {
-      fullName: '',
       email: '',
-      phone: null,
       password: '',
-      passwordConfirmation: '',
     },
   })
 
-  const onSubmit = handleSubmit(async (data: RegisterFormInputs) => {
+  const onSubmit = handleSubmit(async (data: LoginFormInputs) => {
     try {
       await authApi.register(data)
 
@@ -61,15 +54,6 @@ const Register = () => {
         <TextField
           fullWidth
           margin="normal"
-          label="Full name"
-          name="fullName"
-          inputRef={register({ required: 'This field is required' })}
-          error={!!errors.fullName?.message}
-        />
-
-        <TextField
-          fullWidth
-          margin="normal"
           label="Email"
           name="email"
           inputRef={register({
@@ -80,15 +64,6 @@ const Register = () => {
             },
           })}
           error={!!errors.email?.message}
-        />
-
-        <TextField
-          fullWidth
-          margin="normal"
-          label="Phone number"
-          name="phone"
-          inputRef={register({ required: 'This field is required' })}
-          error={!!errors.phone?.message}
         />
 
         <FormControl fullWidth margin="normal">
@@ -112,37 +87,12 @@ const Register = () => {
           />
         </FormControl>
 
-        <FormControl fullWidth margin="normal">
-          <InputLabel htmlFor="passwordConfirmation" error={!!errors.passwordConfirmation?.message}>
-            Confirm password
-          </InputLabel>
-          <Input
-            type={showRepeatPassword ? 'text' : 'password'}
-            name="passwordConfirmation"
-            inputRef={register({
-              required: 'This field is required',
-              validate: (value) => value === watch('password') || 'Password confirmation does not match password',
-            })}
-            error={!!errors.passwordConfirmation?.message}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={() => setShowRepeatPassword(!showRepeatPassword)}
-                >
-                  {showRepeatPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
-          />
-        </FormControl>
-
         <Button variant="contained" color="primary" type="submit" className={classes.root} fullWidth>
-          Register
+          Login
         </Button>
       </form>
     </Container>
   )
 }
 
-export default Register
+export default Login
