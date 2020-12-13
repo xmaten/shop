@@ -10,11 +10,13 @@ import { __prod__, COOKIE_NAME } from './constants'
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule)
-  app.enableCors({
-    credentials: true,
-  })
   const RedisStore = connectRedis(session)
   const redis = new Redis(process.env.REDIS_URL)
+
+  app.enableCors({
+    origin: true,
+    credentials: true,
+  })
 
   const options = new DocumentBuilder()
     .setTitle('Shop API')
