@@ -11,4 +11,8 @@ export const authApi = {
   async login(formData: LoginFormInputs) {
     return httpClient().post('/auth/login', formData)
   },
+
+  async logout() {
+    return httpClient().post('/auth/logout')
+  },
 }
