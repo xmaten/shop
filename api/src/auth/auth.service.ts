@@ -39,8 +39,6 @@ export class AuthService {
 
     await this.usersRepository.insert(newUser)
 
-    request.session.userId = newUser.id
-
     return {
       ...newUser,
       password: '',
