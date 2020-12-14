@@ -1,1 +1,2 @@
-export type MyRequest = Request & { session: any; clearCookie: any }
+export type MyRequest = Request & { session: any }
+export type MyResponse = Response & { clearCookie: any; send: any }

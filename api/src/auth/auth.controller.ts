@@ -1,7 +1,7 @@
-import { Body, Controller, Post, Req, Get } from '@nestjs/common'
+import { Body, Controller, Post, Req, Get, Res } from '@nestjs/common'
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 
-import { MyRequest } from 'src/types'
+import { MyRequest, MyResponse } from 'src/types'
 import { User } from 'src/entities/User'
 
 import { RegisterPayloadDto, LoginPayloadDto } from './auth.interface'
@@ -20,7 +20,6 @@ export class AuthController {
     @Body() registerPayload: RegisterPayloadDto,
     @Req() request: MyRequest,
   ) {
-    console.log('here')
     return this.authService.register(registerPayload, request)
   }
 
@@ -44,7 +43,7 @@ export class AuthController {
   }
 
   @Post('/logout')
-  async logout(request: MyRequest) {
-    return this.authService.logout(request)
+  async logout(@Req() request: MyRequest, @Res() response: MyResponse) {
+    return this.authService.logout(request, response)
   }
 }

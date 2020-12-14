@@ -4,7 +4,7 @@ import { Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 
 import { User } from 'src/entities/User'
-import { MyRequest } from 'src/types'
+import { MyRequest, MyResponse } from 'src/types'
 import { COOKIE_NAME } from 'src/constants'
 
 import { LoginPayloadDto, RegisterPayloadDto } from './auth.interface'
@@ -81,17 +81,19 @@ export class AuthService {
     }
   }
 
-  logout(request: MyRequest) {
-    return new Promise((resolve) =>
+  logout(request: MyRequest, response: MyResponse) {
+    return new Promise((resolve) => {
       request.session.destroy((err) => {
-        request.clearCookie(COOKIE_NAME)
+        response.clearCookie(COOKIE_NAME)
+
         if (err) {
           resolve(false)
           return
         }
 
         resolve(true)
-      }),
-    )
+        response.send()
+      })
+    })
   }
 }

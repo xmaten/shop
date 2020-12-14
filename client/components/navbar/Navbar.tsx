@@ -1,8 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { createStyles, makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Button from '@material-ui/core/Button'
-import Router from 'next/router'
 import Link from 'next/link'
 
 import { authApi } from 'api/auth'
@@ -26,15 +25,25 @@ export const Navbar = () => {
   const logout = async () => {
     await authApi.logout()
 
-    Router.push('/')
+    window.location.reload()
   }
+
+  const getMe = async () => {
+    const { data } = await authApi.getMe()
+
+    console.log(data)
+  }
+
+  useEffect(() => {
+    getMe()
+  }, [])
 
   return (
     <AppBar position="static" className={classes.root}>
       <Link href="/">
         <div>Shop</div>
       </Link>
-      <Button onClick={logout}>Logout</Button>
+      <Button onClick={() => logout()}>Logout</Button>
     </AppBar>
   )
 }
