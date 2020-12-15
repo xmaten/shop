@@ -1,14 +1,5 @@
 import React, { useState } from 'react'
-import Container from '@material-ui/core/Container'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
-import InputAdornment from '@material-ui/core/InputAdornment'
-import IconButton from '@material-ui/core/IconButton'
-import FormControl from '@material-ui/core/FormControl'
-import InputLabel from '@material-ui/core/InputLabel'
-import Input from '@material-ui/core/Input'
 import { Visibility, VisibilityOff } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
 import { useForm } from 'react-hook-form'
 import Router from 'next/router'
 
@@ -19,16 +10,8 @@ export type LoginFormInputs = {
   password: string
 }
 
-const useSubmitButtonStyles = makeStyles({
-  root: {
-    width: '100%',
-  },
-})
-
 const Login = () => {
   const [showPassword, setShowPassword] = useState(false)
-
-  const classes = useSubmitButtonStyles()
 
   const { register, handleSubmit, errors } = useForm<LoginFormInputs>({
     defaultValues: {
@@ -48,49 +31,34 @@ const Login = () => {
   })
 
   return (
-    <Container maxWidth="sm">
+    <div>
       <form onSubmit={onSubmit}>
-        <TextField
-          fullWidth
-          margin="normal"
-          label="Email"
+        <label htmlFor="email">Email</label>
+        <input
           name="email"
-          inputRef={register({
+          ref={register({
             required: 'This field is required',
             pattern: {
               value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,5}$/i,
               message: 'Invalid email address',
             },
           })}
-          error={!!errors.email?.message}
         />
 
-        <FormControl fullWidth margin="normal">
-          <InputLabel htmlFor="password" error={!!errors.password?.message}>
-            Password
-          </InputLabel>
-          <Input
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
             type={showPassword ? 'text' : 'password'}
             name="password"
-            inputRef={register({
+            ref={register({
               required: 'This field is required',
             })}
-            error={!!errors.password?.message}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton aria-label="toggle password visibility" onClick={() => setShowPassword(!showPassword)}>
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-            }
           />
-        </FormControl>
+        </div>
 
-        <Button variant="contained" color="primary" type="submit" className={classes.root} fullWidth>
-          Login
-        </Button>
+        <button type="submit">Login</button>
       </form>
-    </Container>
+    </div>
   )
 }
 

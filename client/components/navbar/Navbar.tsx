@@ -1,27 +1,9 @@
 import React, { useEffect } from 'react'
-import { createStyles, makeStyles } from '@material-ui/core/styles'
-import AppBar from '@material-ui/core/AppBar'
-import Button from '@material-ui/core/Button'
 import Link from 'next/link'
 
 import { authApi } from 'api/auth'
 
-const useStyles = makeStyles(() =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-      display: 'flex',
-      justifyContent: 'space-between',
-      flexDirection: 'row',
-      alignItems: 'center',
-      padding: '10px 30px',
-    },
-  }),
-)
-
 export const Navbar = () => {
-  const classes = useStyles()
-
   const logout = async () => {
     await authApi.logout()
 
@@ -39,11 +21,13 @@ export const Navbar = () => {
   }, [])
 
   return (
-    <AppBar position="static" className={classes.root}>
+    <div className="flex justify-between items-center py-5 px-10 bg-blue-400 text-white">
       <Link href="/">
-        <div>Shop</div>
+        <p className="text-2xl font-bold">Shop</p>
       </Link>
-      <Button onClick={() => logout()}>Logout</Button>
-    </AppBar>
+      <button className="bg-blue-600 px-5 py-3 rounded-2xl hover:bg-blue-700 transition" onClick={() => logout()}>
+        Logout
+      </button>
+    </div>
   )
 }
