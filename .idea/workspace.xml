@@ -20,8 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/components/Button.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/Input.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/navbar/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/components/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/register.tsx" afterDir="false" />
     </list>
@@ -53,6 +56,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -63,6 +67,11 @@
     <property name="settings.editor.selected.configurable" value="settings.javascript.prettier" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/api/node_modules/typescript/lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/components" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -78,7 +87,9 @@
       <workItem from="1607880086470" duration="1450000" />
       <workItem from="1607958828773" duration="3057000" />
       <workItem from="1608042925131" duration="2925000" />
-      <workItem from="1608046947384" duration="416000" />
+      <workItem from="1608046947384" duration="458000" />
+      <workItem from="1608315470314" duration="1331000" />
+      <workItem from="1608319604371" duration="1473000" />
     </task>
     <servers />
   </component>
@@ -99,24 +110,5 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="2124" y="198" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1608045227514">
-      <screen x="1440" y="-249" width="2560" height="1415" />
-    </state>
-    <state x="2124" y="198" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.25.1440.875/1440.-249.2560.1415@1440.-249.2560.1415" timestamp="1608045227514" />
-    <state x="1994" y="94" key="SettingsEditor" timestamp="1605968929845">
-      <screen x="1440" y="-249" width="2560" height="1415" />
-    </state>
-    <state x="1994" y="94" key="SettingsEditor/0.25.1440.875/1440.-249.2560.1415@1440.-249.2560.1415" timestamp="1605968929845" />
-    <state x="407" y="208" width="626" height="508" key="find.popup" timestamp="1606075465421">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state x="407" y="208" width="626" height="508" key="find.popup/0.25.1440.875@0.25.1440.875" timestamp="1606075465421" />
-    <state x="383" y="225" width="670" height="419" key="search.everywhere.popup" timestamp="1607881107824">
-      <screen x="0" y="25" width="1440" height="875" />
-    </state>
-    <state x="2120" y="75" width="670" height="676" key="search.everywhere.popup/0.25.1440.875/1440.-249.2560.1415@1440.-249.2560.1415" timestamp="1607787639018" />
-    <state x="383" y="225" width="670" height="419" key="search.everywhere.popup/0.25.1440.875@0.25.1440.875" timestamp="1607881107824" />
   </component>
 </project>

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { Visibility, VisibilityOff } from '@material-ui/icons'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import Router from 'next/router'
 
 import { authApi } from 'api/auth'
+import { Input } from 'components/Input'
+import { Button } from 'components/Button'
 
 export type RegisterFormInputs = {
   fullName: string
@@ -14,9 +15,6 @@ export type RegisterFormInputs = {
 }
 
 const Register = () => {
-  const [showPassword, setShowPassword] = useState(false)
-  const [showRepeatPassword, setShowRepeatPassword] = useState(false)
-
   const { register, handleSubmit, errors, watch } = useForm<RegisterFormInputs>({
     defaultValues: {
       fullName: '',
@@ -38,12 +36,16 @@ const Register = () => {
   })
 
   return (
-    <div>
+    <div className="container mx-auto max-w-xs pt-10">
       <form onSubmit={onSubmit}>
-        <input name="fullName" ref={register({ required: 'This field is required' })} />
+        <Input
+          ref={register({ required: 'This field is required' })}
+          name="fullName"
+          label="Full name"
+          error={errors.fullName}
+        />
 
-        <input
-          name="email"
+        <Input
           ref={register({
             required: 'This field is required',
             pattern: {
@@ -51,34 +53,35 @@ const Register = () => {
               message: 'Invalid email address',
             },
           })}
+          name="email"
+          label="Email"
+          error={errors.email}
         />
 
-        <input ref={register({ required: 'This field is required' })} />
+        <Input
+          ref={register({
+            required: 'This field is required',
+          })}
+          name="password"
+          label="Password"
+          error={errors.password}
+          type="password"
+        />
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            ref={register({
-              required: 'This field is required',
-            })}
-          />
-        </div>
+        <Input
+          ref={register({
+            required: 'This field is required',
+            validate: (value) => value === watch('password') || 'Password confirmation does not match password',
+          })}
+          name="passwordConfirmation"
+          label="Confirm password"
+          error={errors.passwordConfirmation}
+          type="password"
+        />
 
-        <div>
-          <label htmlFor="passwordConfirmation">Confirm password</label>
-          <input
-            type={showRepeatPassword ? 'text' : 'password'}
-            name="passwordConfirmation"
-            ref={register({
-              required: 'This field is required',
-              validate: (value) => value === watch('password') || 'Password confirmation does not match password',
-            })}
-          />
-        </div>
-
-        <button type="submit">Register</button>
+        <Button onClick={onSubmit} type="submit">
+          Register
+        </Button>
       </form>
     </div>
   )

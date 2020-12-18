@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
-import { Visibility, VisibilityOff } from '@material-ui/icons'
+import React from 'react'
 import { useForm } from 'react-hook-form'
 import Router from 'next/router'
 
+import { Input } from 'components/Input'
 import { authApi } from 'api/auth'
+import { Button } from '../components/Button'
 
 export type LoginFormInputs = {
   email: string
@@ -11,8 +12,6 @@ export type LoginFormInputs = {
 }
 
 const Login = () => {
-  const [showPassword, setShowPassword] = useState(false)
-
   const { register, handleSubmit, errors } = useForm<LoginFormInputs>({
     defaultValues: {
       email: '',
@@ -31,11 +30,9 @@ const Login = () => {
   })
 
   return (
-    <div>
+    <div className="container mx-auto max-w-xs pt-10">
       <form onSubmit={onSubmit}>
-        <label htmlFor="email">Email</label>
-        <input
-          name="email"
+        <Input
           ref={register({
             required: 'This field is required',
             pattern: {
@@ -43,20 +40,25 @@ const Login = () => {
               message: 'Invalid email address',
             },
           })}
+          name="email"
+          label="E-mail"
+          type="email"
+          error={errors.email}
         />
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type={showPassword ? 'text' : 'password'}
-            name="password"
-            ref={register({
-              required: 'This field is required',
-            })}
-          />
-        </div>
+        <Input
+          ref={register({
+            required: 'This field is required',
+          })}
+          name="password"
+          label="Password"
+          type="password"
+          error={errors.password}
+        />
 
-        <button type="submit">Login</button>
+        <Button type="submit" onClick={onSubmit}>
+          Login
+        </Button>
       </form>
     </div>
   )
