@@ -1,10 +1,11 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Router from 'next/router'
+import { useMutation } from 'react-query'
 
-import { Input } from 'components/Input'
 import { authApi } from 'api/auth'
-import { Button } from '../components/Button'
+import { Input } from 'components/Input'
+import { Button } from 'components/Button'
 
 export type LoginFormInputs = {
   email: string
@@ -19,14 +20,17 @@ const Login = () => {
     },
   })
 
-  const onSubmit = handleSubmit(async (data: LoginFormInputs) => {
-    try {
-      await authApi.login(data)
-
+  const loginMutation = useMutation(authApi.login, {
+    onSuccess: () => {
       Router.push('/')
-    } catch {
-      console.log('error')
-    }
+    },
+    onError: (error) => {
+      console.log('this is error', error)
+    },
+  })
+
+  const onSubmit = handleSubmit((data: LoginFormInputs) => {
+    loginMutation.mutate(data)
   })
 
   return (
@@ -56,7 +60,7 @@ const Login = () => {
           error={errors.password}
         />
 
-        <Button type="submit" onClick={onSubmit}>
+        <Button type="submit" isDisabled={loginMutation.isLoading}>
           Login
         </Button>
       </form>

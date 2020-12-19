@@ -1,5 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 
@@ -8,15 +10,18 @@ type Props = {
   pageProps: any
 }
 
+const queryClient = new QueryClient()
+
 const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
+      <ReactQueryDevtools initialIsOpen={false} />
       <Head>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
       <Component {...pageProps} />
-    </>
+    </QueryClientProvider>
   )
 }
 

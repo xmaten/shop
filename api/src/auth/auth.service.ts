@@ -1,4 +1,4 @@
-import { Injectable, Req } from '@nestjs/common'
+import { Injectable, Req, HttpException, HttpStatus } from '@nestjs/common'
 import { hash, verify } from 'argon2'
 import { Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
@@ -64,13 +64,13 @@ export class AuthService {
     const user = await this.usersRepository.findOne({ email })
 
     if (!user) {
-      return "User doesn't exist"
+      throw new HttpException('Incorrect login data', 401)
     }
 
     const valid = await verify(user.password, password)
 
     if (!valid) {
-      return 'Incorrect password'
+      throw new HttpException('Incorrect login data', 401)
     }
 
     request.session.userId = user.id

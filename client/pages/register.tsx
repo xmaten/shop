@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
 import Router from 'next/router'
+import { useMutation } from 'react-query'
 
 import { authApi } from 'api/auth'
 import { Input } from 'components/Input'
@@ -25,14 +26,17 @@ const Register = () => {
     },
   })
 
-  const onSubmit = handleSubmit(async (data: RegisterFormInputs) => {
-    try {
-      await authApi.register(data)
-
+  const registerMutation = useMutation(authApi.register, {
+    onSuccess: () => {
       Router.push('/login')
-    } catch {
-      console.log('error')
-    }
+    },
+    onError: (error) => {
+      console.log(error)
+    },
+  })
+
+  const onSubmit = handleSubmit((data: RegisterFormInputs) => {
+    registerMutation.mutate(data)
   })
 
   return (
@@ -79,7 +83,7 @@ const Register = () => {
           type="password"
         />
 
-        <Button onClick={onSubmit} type="submit">
+        <Button onClick={onSubmit} type="submit" isDisabled={registerMutation.isLoading}>
           Register
         </Button>
       </form>
