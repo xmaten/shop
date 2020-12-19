@@ -20,16 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/client/types/User.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/auth/auth.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/Input.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Input.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/api/auth.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/api/auth.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/_app.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/login.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/pages/register.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/register.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TypeScript File" />
         <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
       </list>
     </option>
   </component>
@@ -93,7 +89,7 @@
       <workItem from="1608046947384" duration="458000" />
       <workItem from="1608315470314" duration="1331000" />
       <workItem from="1608319604371" duration="2026000" />
-      <workItem from="1608362841218" duration="2342000" />
+      <workItem from="1608362841218" duration="3147000" />
     </task>
     <servers />
   </component>

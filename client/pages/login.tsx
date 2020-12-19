@@ -24,9 +24,6 @@ const Login = () => {
     onSuccess: () => {
       Router.push('/')
     },
-    onError: (error) => {
-      console.log('this is error', error)
-    },
   })
 
   const onSubmit = handleSubmit((data: LoginFormInputs) => {
@@ -35,6 +32,7 @@ const Login = () => {
 
   return (
     <div className="container mx-auto max-w-xs pt-10">
+      {loginMutation.isError && <p className="text-red-700 mb-3">There was an error. Please try again later.</p>}
       <form onSubmit={onSubmit}>
         <Input
           ref={register({

@@ -1,5 +1,8 @@
 import { RegisterFormInputs } from 'pages/register'
 import { LoginFormInputs } from 'pages/login'
+import { AxiosResponse } from 'axios'
+
+import { User } from 'types/User'
 
 import { httpClient } from './httpClient'
 
@@ -16,7 +19,7 @@ export const authApi = {
     return httpClient().post('/auth/logout')
   },
 
-  async getMe() {
+  async getMe(): Promise<AxiosResponse<User>> {
     return httpClient().get('/auth/me')
   },
 }

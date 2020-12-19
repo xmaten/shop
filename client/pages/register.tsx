@@ -30,9 +30,6 @@ const Register = () => {
     onSuccess: () => {
       Router.push('/login')
     },
-    onError: (error) => {
-      console.log(error)
-    },
   })
 
   const onSubmit = handleSubmit((data: RegisterFormInputs) => {
@@ -41,6 +38,7 @@ const Register = () => {
 
   return (
     <div className="container mx-auto max-w-xs pt-10">
+      {registerMutation.isError && <p className="text-red-700 mb-3">There was an error. Please try again later.</p>}
       <form onSubmit={onSubmit}>
         <Input
           ref={register({ required: 'This field is required' })}
