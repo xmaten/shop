@@ -5,6 +5,8 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 
+import { Navbar } from 'components/Navbar'
+
 type Props = {
   Component: any
   pageProps: any
@@ -20,7 +22,10 @@ const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
       </Head>
-      <Component {...pageProps} />
+      <div>
+        <Navbar />
+        <Component {...pageProps} />
+      </div>
     </QueryClientProvider>
   )
 }

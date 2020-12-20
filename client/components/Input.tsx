@@ -5,7 +5,7 @@ type Props = {
   ref: ForwardedRef<HTMLInputElement>
   name: string
   label: string
-  type?: 'text' | 'password' | 'email'
+  type?: 'text' | 'password' | 'email' | 'number'
   error?: FieldError
 }
 
@@ -16,7 +16,7 @@ export const Input: React.FC<Props> = React.forwardRef(({ name, label, type = 't
       name={name}
       ref={ref}
       type={type}
-      className={`border-2 ${error ? 'border-red-700' : 'border-blue-100'} outline-none py-1`}
+      className={`border-2 ${error ? 'border-red-700' : 'border-blue-100'} outline-none p-1`}
     />
     {error ? <p className="text-red-700 text-xs">{error.message}</p> : ''}
   </div>
