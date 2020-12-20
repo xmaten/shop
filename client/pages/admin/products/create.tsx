@@ -3,9 +3,10 @@ import { useForm } from 'react-hook-form'
 import { useMutation } from 'react-query'
 import Router from 'next/router'
 
-import { useIsAdmin } from 'utils/hooks/useIsAdmin'
 import { Input } from 'components/Input'
 import { Button } from 'components/Button'
+import { Textarea } from 'components/Textarea'
+import { useIsAdmin } from 'utils/hooks/useIsAdmin'
 import { Product } from 'types/Product'
 import { productApi } from 'api/product'
 
@@ -45,7 +46,7 @@ const CreateProduct = () => {
           error={errors.name}
         />
 
-        <Input
+        <Textarea
           ref={register({
             required: 'This field is required',
           })}

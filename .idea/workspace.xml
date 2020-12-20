@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/components/products/ProductListHeader.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/components/products/ProductListItem.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pages/admin/products/all.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/components/Textarea.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/api/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/api/product.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/pages/admin/products/create.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/admin/products/create.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +87,7 @@
       <workItem from="1608315470314" duration="1331000" />
       <workItem from="1608319604371" duration="2026000" />
       <workItem from="1608362841218" duration="5961000" />
-      <workItem from="1608463334176" duration="2859000" />
+      <workItem from="1608463334176" duration="3030000" />
     </task>
     <servers />
   </component>
