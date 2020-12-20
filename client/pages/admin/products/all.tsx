@@ -1,8 +1,9 @@
 import { useQuery } from 'react-query'
 
-import { productApi } from 'api/product'
 import { ProductListItem } from 'components/products/ProductListItem'
 import { ProductListHeader } from 'components/products/ProductListHeader'
+import { AdminWrapper } from 'components/layout/AdminWrapper'
+import { productApi } from 'api/product'
 
 const AllProducts = () => {
   const { data, isLoading, isError } = useQuery('adminProducts', productApi.getAllAdminProducts)
@@ -26,12 +27,14 @@ const AllProducts = () => {
   }
 
   return (
-    <div className="container mx-auto max-w-xxl pt-10">
-      <>
-        <ProductListHeader />
-        {renderProductsResponse()}
-      </>
-    </div>
+    <AdminWrapper>
+      <div className="container mx-auto max-w-xxl pt-10">
+        <>
+          <ProductListHeader />
+          {renderProductsResponse()}
+        </>
+      </div>
+    </AdminWrapper>
   )
 }
 

@@ -6,6 +6,7 @@ import Router from 'next/router'
 import { Input } from 'components/Input'
 import { Button } from 'components/Button'
 import { Textarea } from 'components/Textarea'
+import { AdminWrapper } from 'components/layout/AdminWrapper'
 import { useIsAdmin } from 'utils/hooks/useIsAdmin'
 import { Product } from 'types/Product'
 import { productApi } from 'api/product'
@@ -35,69 +36,71 @@ const CreateProduct = () => {
   })
 
   return (
-    <div className="container mx-auto max-w-md pt-10">
-      <form onSubmit={onSubmit}>
-        <Input
-          ref={register({
-            required: 'This field is required',
-          })}
-          name="name"
-          label="Product name"
-          error={errors.name}
-        />
+    <AdminWrapper>
+      <div className="container mx-auto max-w-md pt-10">
+        <form onSubmit={onSubmit}>
+          <Input
+            ref={register({
+              required: 'This field is required',
+            })}
+            name="name"
+            label="Product name"
+            error={errors.name}
+          />
 
-        <Textarea
-          ref={register({
-            required: 'This field is required',
-          })}
-          name="description"
-          label="Description"
-          error={errors.description}
-        />
+          <Textarea
+            ref={register({
+              required: 'This field is required',
+            })}
+            name="description"
+            label="Description"
+            error={errors.description}
+          />
 
-        <Input
-          ref={register({
-            required: 'This field is required',
-          })}
-          name="image"
-          label="Image URL"
-          error={errors.image}
-        />
+          <Input
+            ref={register({
+              required: 'This field is required',
+            })}
+            name="image"
+            label="Image URL"
+            error={errors.image}
+          />
 
-        <Input
-          ref={register({
-            required: 'This field is required',
-          })}
-          name="category"
-          label="Category"
-          error={errors.category}
-        />
+          <Input
+            ref={register({
+              required: 'This field is required',
+            })}
+            name="category"
+            label="Category"
+            error={errors.category}
+          />
 
-        <Input
-          ref={register({
-            required: 'This field is required',
-          })}
-          name="stock"
-          label="Stock"
-          error={errors.stock}
-          type="number"
-        />
+          <Input
+            ref={register({
+              required: 'This field is required',
+            })}
+            name="stock"
+            label="Stock"
+            error={errors.stock}
+            type="number"
+          />
 
-        <Input
-          ref={register({
-            required: 'This field is required',
-          })}
-          name="price"
-          label="Price"
-          error={errors.price}
-          type="number"
-        />
+          <Input
+            ref={register({
+              required: 'This field is required',
+            })}
+            name="price"
+            label="Price"
+            error={errors.price}
+            type="number"
+          />
 
-        <Button type="submit" isDisabled={createProductMutation.isLoading}>
-          Create
-        </Button>
-      </form>
-    </div>
+          <Button type="submit" isDisabled={createProductMutation.isLoading}>
+            Create
+          </Button>
+        </form>
+      </div>
+    </AdminWrapper>
   )
 }
 
