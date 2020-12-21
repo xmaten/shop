@@ -3,6 +3,8 @@ import { useQuery } from 'react-query'
 
 import { AdminWrapper } from 'components/layout/AdminWrapper'
 import { productApi } from 'api/product'
+import { AdminFooter } from '../../../components/layout/AdminFooter'
+import { Button } from '../../../components/Button'
 
 const ProductPage = () => {
   const router = useRouter()
@@ -60,6 +62,20 @@ const ProductPage = () => {
   return (
     <AdminWrapper>
       <div className="container mx-auto max-w-xxl pt-10">{renderProductsResponse()}</div>
+
+      <AdminFooter>
+        <div className="flex justify-between">
+          <div className="w-1/4">
+            <Button onClick={() => console.log('deleted')}>Delete</Button>
+          </div>
+
+          <div className="w-1/4">
+            <Button href="/admin/products/edit/[id]" as={`/admin/products/edit/${productId}`}>
+              Edit
+            </Button>
+          </div>
+        </div>
+      </AdminFooter>
     </AdminWrapper>
   )
 }
