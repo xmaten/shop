@@ -29,10 +29,8 @@ const AllProducts = () => {
   return (
     <AdminWrapper>
       <div className="container mx-auto max-w-xxl pt-10">
-        <>
-          <ProductListHeader />
-          {renderProductsResponse()}
-        </>
+        <ProductListHeader />
+        {renderProductsResponse()}
       </div>
     </AdminWrapper>
   )
