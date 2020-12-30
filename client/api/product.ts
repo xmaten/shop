@@ -13,6 +13,10 @@ export const productApi = {
     return httpClient().put(`/admin/products/${updateProductPayload.productId}`, updateProductPayload.formData)
   },
 
+  async deleteProduct(productId: number) {
+    return httpClient().delete(`/admin/products/${productId}`)
+  },
+
   async getAllAdminProducts(): Promise<AxiosResponse<Product[]>> {
     return httpClient().get('/admin/products')
   },

@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useQuery } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 
 import { AdminWrapper } from 'components/layout/AdminWrapper'
 import { AdminFooter } from 'components/layout/AdminFooter'
@@ -12,6 +12,12 @@ const ProductPage = () => {
   const { data, isLoading, isError } = useQuery([`adminProduct-${productId}`, productId], () =>
     productApi.getOneAdminProduct(productId),
   )
+
+  const deleteProductMutation = useMutation(productApi.deleteProduct, {
+    onSuccess: () => {
+      router.back()
+    },
+  })
 
   const renderProductsResponse = () => {
     if (isLoading) {
@@ -66,7 +72,7 @@ const ProductPage = () => {
       <AdminFooter>
         <div className="flex justify-between">
           <div className="w-1/4">
-            <Button onClick={() => console.log('deleted')}>Delete</Button>
+            <Button onClick={() => data?.data && deleteProductMutation.mutate(data?.data.id)}>Delete</Button>
           </div>
 
           <div className="w-1/4">
