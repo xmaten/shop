@@ -2,9 +2,9 @@ import { useRouter } from 'next/router'
 import { useQuery } from 'react-query'
 
 import { AdminWrapper } from 'components/layout/AdminWrapper'
+import { AdminFooter } from 'components/layout/AdminFooter'
+import { Button } from 'components/Button'
 import { productApi } from 'api/product'
-import { AdminFooter } from '../../../components/layout/AdminFooter'
-import { Button } from '../../../components/Button'
 
 const ProductPage = () => {
   const router = useRouter()

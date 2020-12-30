@@ -1,12 +1,16 @@
 import { AxiosResponse } from 'axios'
 
-import { Product } from 'types/Product'
+import { Product, UpdateProductPayload } from 'types/Product'
 
 import { httpClient } from './httpClient'
 
 export const productApi = {
   async createProduct(data: Product) {
     return httpClient().post('/admin/products/create', data)
+  },
+
+  async editProduct(updateProductPayload: UpdateProductPayload) {
+    return httpClient().put(`/admin/products/${updateProductPayload.productId}`, updateProductPayload.formData)
   },
 
   async getAllAdminProducts(): Promise<AxiosResponse<Product[]>> {

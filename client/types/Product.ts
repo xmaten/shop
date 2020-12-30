@@ -7,3 +7,8 @@ export type Product = {
   stock: number
   image: string
 }
+
+export type UpdateProductPayload = {
+  productId: number
+  formData: Product
+}
