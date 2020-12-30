@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm'
 
 import { AuthModule } from 'src/auth/auth.module'
 import { AdminModule } from 'src/admin/admin.module'
+import { ProductsModule } from 'src/products/products.module'
 import { User } from 'src/entities/User'
 import { Product } from 'src/entities/Product'
 
@@ -22,6 +23,7 @@ import { Product } from 'src/entities/Product'
     }),
     AuthModule,
     AdminModule,
+    ProductsModule,
   ],
   controllers: [],
   providers: [],
