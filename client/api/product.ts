@@ -24,4 +24,12 @@ export const productApi = {
   async getOneAdminProduct(productId: number): Promise<AxiosResponse<Product>> {
     return httpClient().get(`/admin/products/${productId}`)
   },
+
+  async getAllClientProducts(): Promise<AxiosResponse<Product[]>> {
+    return httpClient().get('/products')
+  },
+
+  async getOneClientProduct(productId: number): Promise<AxiosResponse<Product>> {
+    return httpClient().get(`/admin/products/${productId}`)
+  },
 }
