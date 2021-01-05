@@ -1,5 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
+
+import { Order } from './Order'
 
 @Entity()
 export class User {
@@ -26,4 +28,8 @@ export class User {
   @ApiProperty()
   @Column()
   role: string
+
+  @ApiProperty()
+  @OneToMany(() => Order, (order) => order.user)
+  orders: Order[]
 }

@@ -7,6 +7,7 @@ import { AdminModule } from 'src/admin/admin.module'
 import { ProductsModule } from 'src/products/products.module'
 import { User } from 'src/entities/User'
 import { Product } from 'src/entities/Product'
+import { Order } from 'src/entities/Order'
 
 @Module({
   imports: [
@@ -18,7 +19,7 @@ import { Product } from 'src/entities/Product'
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User, Product],
+      entities: [User, Product, Order],
       synchronize: true,
     }),
     AuthModule,
