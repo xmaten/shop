@@ -11,7 +11,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
 
   return (
     <Link href={`/admin/products/${product.id}`}>
-      <div className="flex justify-between items-center border-solid border-black border-2 cursor-pointer">
+      <div className="flex justify-between items-center border-solid border-black border-2 cursor-pointer mb-2">
         <div className="w-1/4">
           <img src={product.image} alt={product.name} />
         </div>
@@ -28,7 +28,7 @@ export const ProductListItem: React.FC<Props> = ({ product }) => {
           <p>{product.price}</p>
         </div>
 
-        <div className={itemClasses}>
+        <div className="w-1/4 flex justify-center items-center h-auto">
           <p>{product.stock}</p>
         </div>
       </div>

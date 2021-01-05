@@ -12,10 +12,7 @@ export const AdminSidebar = () => {
     },
   ]
   return (
-    <aside
-      className="w-1/6 p-4 flex flex-col border-solid border-black border-r mr-5"
-      style={{ height: 'calc(100vh - 88px)' }}
-    >
+    <aside className="w-1/6 p-4 flex flex-col border-solid border-black border-r mr-5 h-auto">
       {routes.map((route) => (
         <Link key={route.link} href={route.link}>
           <a className="mb-3">{route.label}</a>
