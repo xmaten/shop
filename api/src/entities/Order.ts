@@ -27,7 +27,7 @@ export class Order {
   products: Product[]
 
   @ApiProperty()
-  @Column()
+  @Column({ nullable: true })
   totalPrice: number
 
   @ApiProperty()

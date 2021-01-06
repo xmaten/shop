@@ -29,7 +29,6 @@ export class AuthService {
     const hashedPassword = await hash(password)
 
     const newUser = {
-      id: 0,
       fullName,
       email,
       phone,

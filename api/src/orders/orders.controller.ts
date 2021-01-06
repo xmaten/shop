@@ -5,11 +5,14 @@ import {
   Param,
   ParseIntPipe,
   Post,
+  Req,
 } from '@nestjs/common'
-import { ApiTags } from '@nestjs/swagger'
+import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
+
+import { MyRequest } from 'src/types'
 
 import { OrdersService } from './orders.service'
-import { ManageOrderPayload } from './orders.interface'
+import { ManageOrderPayload, NewOrder } from './orders.interface'
 
 @ApiTags('Orders')
 @Controller('/orders')
@@ -17,8 +20,11 @@ export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
 
   @Post('/')
-  async createOrder() {
-    return this.ordersService.createOrder()
+  @ApiCreatedResponse({
+    type: NewOrder,
+  })
+  async createOrder(@Req() request: MyRequest) {
+    return this.ordersService.createOrder(request)
   }
 
   @Post(':orderId/add')
