@@ -21,10 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/auth/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/auth/auth.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/entities/Order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/entities/Order.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/orders/orders.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/orders/orders.controller.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/orders/orders.interface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/orders/orders.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/orders/orders.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/orders/orders.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/orders/orders.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/orders/orders.service.ts" afterDir="false" />
     </list>
@@ -102,7 +99,9 @@
       <workItem from="1609320559406" duration="2608000" />
       <workItem from="1609772651588" duration="3384000" />
       <workItem from="1609856621740" duration="4140000" />
-      <workItem from="1609943001360" duration="3866000" />
+      <workItem from="1609943001360" duration="3902000" />
+      <workItem from="1610035270111" duration="2477000" />
+      <workItem from="1610117952861" duration="809000" />
     </task>
     <servers />
   </component>

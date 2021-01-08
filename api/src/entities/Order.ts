@@ -5,6 +5,7 @@ import {
   ManyToMany,
   JoinTable,
   ManyToOne,
+  BaseEntity,
 } from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
 
@@ -12,7 +13,7 @@ import { Product } from './Product'
 import { User } from './User'
 
 @Entity()
-export class Order {
+export class Order extends BaseEntity {
   @ApiProperty()
   @PrimaryGeneratedColumn()
   id: number
@@ -22,7 +23,7 @@ export class Order {
   user: User
 
   @ApiProperty()
-  @ManyToMany(() => Product)
+  @ManyToMany(() => Product, { cascade: true })
   @JoinTable()
   products: Product[]
 
