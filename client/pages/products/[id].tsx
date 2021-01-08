@@ -5,6 +5,7 @@ import { dehydrate } from 'react-query/hydration'
 
 import { productApi } from 'api/product'
 import { Product } from 'types/Product'
+import { AddProductToOrder } from 'components/order/AddProductToOrder'
 
 const ProductPage = () => {
   const router = useRouter()
@@ -36,6 +37,10 @@ const ProductPage = () => {
 
             <div>
               <p>{product.description}</p>
+            </div>
+
+            <div className="mt-10">
+              <AddProductToOrder productId={productId} />
             </div>
           </div>
         </div>
