@@ -6,13 +6,18 @@ import {
   ParseIntPipe,
   Post,
   Req,
+  Get,
 } from '@nestjs/common'
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 
 import { MyRequest } from 'src/types'
 
 import { OrdersService } from './orders.service'
-import { ManageOrderPayload, NewOrder } from './orders.interface'
+import {
+  ManageOrderPayload,
+  NewOrder,
+  OrderWithProducts,
+} from './orders.interface'
 
 @ApiTags('Orders')
 @Controller('/orders')
@@ -41,5 +46,17 @@ export class OrdersController {
     @Body() orderPayload: ManageOrderPayload,
   ) {
     return this.ordersService.removeFromOrder(orderId, orderPayload.productId)
+  }
+
+  @Get(':orderId')
+  @ApiCreatedResponse({
+    type: OrderWithProducts,
+  })
+  async getOrder(
+    @Req() request: MyRequest,
+    @Param('orderId', new ParseIntPipe()) orderId: number,
+  ) {
+    console.log(request, orderId, 'here')
+    return this.ordersService.getOrder(request, orderId)
   }
 }

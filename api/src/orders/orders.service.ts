@@ -32,6 +32,18 @@ export class OrdersService {
     }
   }
 
+  async getOrder(request: MyRequest, orderId: number) {
+    const userId = request.session.userId
+    if (!userId) {
+      throw new Error('Missing user')
+    }
+
+    return await this.ordersRepository.findOne(
+      { id: orderId },
+      { relations: ['products'] },
+    )
+  }
+
   async addToOrder(orderId: number, productId: number) {
     const product = await this.productRepository.findOne({
       id: productId,
