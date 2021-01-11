@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 
-import { ChangeOrderPayload, NewOrder } from 'types/Order'
+import { ChangeOrderPayload, NewOrder, Order } from 'types/Order'
 
 import { httpClient } from './httpClient'
 
@@ -15,11 +15,15 @@ export const orderApi = {
     })
   },
 
-  async removeProductFromOrder(orderId: number, data: ChangeOrderPayload) {
+  async removeProductFromOrder(data: ChangeOrderPayload): Promise<AxiosResponse<Order>> {
     const config = {
       data,
     }
 
-    return httpClient().delete(`/orders/${orderId}/remove`, config)
+    return httpClient().delete(`/orders/${data.orderId}/remove`, config)
+  },
+
+  async getOrder(orderId: number): Promise<AxiosResponse<Order>> {
+    return httpClient().get(`/orders/${orderId}`)
   },
 }

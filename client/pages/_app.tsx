@@ -6,7 +6,7 @@ import { Hydrate } from 'react-query/hydration'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
 
-import { Navbar } from 'components/Navbar'
+import { Navbar } from 'components/nav/Navbar'
 
 type Props = {
   Component: any

@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query'
 
-import { ProductListItem } from 'components/products/ProductListItem'
+import { ProductListItemAdmin } from 'components/products/ProductListItemAdmin'
 import { ProductListHeader } from 'components/products/ProductListHeader'
 import { AdminWrapper } from 'components/layout/AdminWrapper'
 import { productApi } from 'api/product'
@@ -20,7 +20,7 @@ const AllProducts = () => {
     return (
       <>
         {data?.data.map((product) => (
-          <ProductListItem key={product.name} product={product} />
+          <ProductListItemAdmin key={product.name} product={product} />
         ))}
       </>
     )

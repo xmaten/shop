@@ -6,7 +6,7 @@ type Props = {
   product: Product
 }
 
-export const ProductListItem: React.FC<Props> = ({ product }) => {
+export const ProductListItemAdmin: React.FC<Props> = ({ product }) => {
   const itemClasses = 'w-1/4 flex justify-center items-center border-solid border-black border-r h-auto'
 
   return (

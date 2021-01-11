@@ -19,11 +19,7 @@ export const AddProductToOrder: React.FC<Props> = ({ productId }) => {
     },
   })
 
-  const addProductToOrderMutation = useMutation(orderApi.addProductToOrder, {
-    onSuccess: () => {
-      console.log('Added')
-    },
-  })
+  const addProductToOrderMutation = useMutation(orderApi.addProductToOrder)
 
   const addProductToCart = async () => {
     const orderId = Number(localStorage.getItem('orderId'))
