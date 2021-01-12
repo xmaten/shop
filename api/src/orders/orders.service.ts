@@ -12,7 +12,7 @@ export class OrdersService {
   constructor(
     @InjectRepository(Order) private ordersRepository: Repository<Order>,
     @InjectRepository(User) private usersRepository: Repository<User>,
-    @InjectRepository(Product) private productRepository: Repository<Product>,
+    @InjectRepository(Product) private productsRepository: Repository<Product>,
   ) {}
 
   async createOrder(@Req() request: MyRequest) {
@@ -45,7 +45,7 @@ export class OrdersService {
   }
 
   async addToOrder(orderId: number, productId: number) {
-    const product = await Product.findOne({
+    const product = await this.productsRepository.findOne({
       id: productId,
     })
 
@@ -57,8 +57,12 @@ export class OrdersService {
       return 'There are no items'
     }
 
-    product.stock = product.stock - 1
-    await product.save()
+    const productWithUpdatedStock = {
+      ...product,
+      stock: product.stock - 1,
+    }
+
+    await this.productsRepository.update(product.id, productWithUpdatedStock)
 
     const order = await Order.findOne(
       { id: orderId },
@@ -75,13 +79,20 @@ export class OrdersService {
   }
 
   async removeFromOrder(orderId: number, productId: number) {
-    const product = await this.productRepository.findOne({
+    const product = await this.productsRepository.findOne({
       id: productId,
     })
 
     if (!product) {
       throw new Error('Missing product')
     }
+
+    const productWithUpdatedStock = {
+      ...product,
+      stock: product.stock + 1,
+    }
+
+    await this.productsRepository.update(product.id, productWithUpdatedStock)
 
     const order = await Order.findOne(
       { id: orderId },
