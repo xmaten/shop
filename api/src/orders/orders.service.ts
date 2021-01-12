@@ -45,13 +45,20 @@ export class OrdersService {
   }
 
   async addToOrder(orderId: number, productId: number) {
-    const product = await this.productRepository.findOne({
+    const product = await Product.findOne({
       id: productId,
     })
 
     if (!product) {
       throw new Error('Missing product')
     }
+
+    if (product.stock <= 0) {
+      return 'There are no items'
+    }
+
+    product.stock = product.stock - 1
+    await product.save()
 
     const order = await Order.findOne(
       { id: orderId },

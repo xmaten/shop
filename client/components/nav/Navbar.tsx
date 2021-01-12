@@ -28,12 +28,18 @@ export const Navbar = () => {
       )}
 
       {data?.data.fullName && (
-        <button
-          className="bg-blue-600 px-5 py-3 rounded-2xl hover:bg-blue-700 transition outline-none"
-          onClick={() => logoutMutation.mutate()}
-        >
-          Logout
-        </button>
+        <div className="flex justify-center items-center">
+          <Link href="/cart">
+            <a className="mr-10">Cart</a>
+          </Link>
+
+          <button
+            className="bg-blue-600 px-5 py-3 rounded-2xl hover:bg-blue-700 transition outline-none"
+            onClick={() => logoutMutation.mutate()}
+          >
+            Logout
+          </button>
+        </div>
       )}
     </div>
   )

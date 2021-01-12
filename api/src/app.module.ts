@@ -22,6 +22,7 @@ import { Order } from 'src/entities/Order'
       database: process.env.DB_NAME,
       entities: [User, Product, Order],
       synchronize: true,
+      logging: true,
     }),
     AuthModule,
     AdminModule,

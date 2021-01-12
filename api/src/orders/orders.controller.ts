@@ -56,7 +56,6 @@ export class OrdersController {
     @Req() request: MyRequest,
     @Param('orderId', new ParseIntPipe()) orderId: number,
   ) {
-    console.log(request, orderId, 'here')
     return this.ordersService.getOrder(request, orderId)
   }
 }
