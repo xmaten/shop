@@ -1,11 +1,20 @@
 import { Injectable, Req } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
+import Stripe from 'stripe'
 
 import { MyRequest } from 'src/types'
 import { Order } from 'src/entities/Order'
 import { User } from 'src/entities/User'
 import { Product } from 'src/entities/Product'
+
+// FIXME: cant get key from env, when I pass key here it works as expected
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
+  apiVersion: '2020-08-27',
+  typescript: true,
+})
+
+const FRONTEND_DOMAIN = 'http://localhost:3000'
 
 @Injectable()
 export class OrdersService {
@@ -108,5 +117,34 @@ export class OrdersService {
     )
 
     return await order.save()
+  }
+
+  async createCheckoutSession(orderId: number) {
+    const order = await Order.findOne(
+      { id: orderId },
+      { relations: ['products'] },
+    )
+
+    const lineItems = order.products.map((product) => ({
+      price_data: {
+        currency: 'pln',
+        product_data: {
+          name: product.name,
+          images: [product.image],
+        },
+        unit_amount: product.price,
+      },
+      quantity: 1,
+    }))
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: lineItems,
+      mode: 'payment',
+      success_url: `${FRONTEND_DOMAIN}/order/success`,
+      cancel_url: `${FRONTEND_DOMAIN}/order/cancel`,
+    })
+
+    return session.id
   }
 }

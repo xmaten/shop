@@ -35,6 +35,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^6.5.4",
+    "stripe": "^8.130.0",
     "swagger-ui-express": "^4.1.4",
     "typeorm": "^0.2.28"
   },
@@ -72,7 +73,9 @@
       "json",
       "ts"
     ],
-    "moduleDirectories": ["node_modules"],
+    "moduleDirectories": [
+      "node_modules"
+    ],
     "rootDir": "src",
     "testRegex": ".spec.ts$",
     "transform": {
