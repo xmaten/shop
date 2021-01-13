@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query'
+import { useStripe } from '@stripe/react-stripe-js'
 
 import { ProductListItemClient } from 'components/products/ProductListItemClient'
 import { RemoveProductFromOrder } from 'components/order/RemoveProductFromOrder'
@@ -7,6 +8,7 @@ import { orderApi } from 'api/order'
 
 const Cart = () => {
   const { data, isError, isLoading } = useQuery('order', () => getOrder())
+  const stripe = useStripe()
 
   const getOrder = () => {
     const orderId = Number(localStorage.getItem('orderId'))
@@ -16,9 +18,24 @@ const Cart = () => {
     }
   }
 
+  const goToPayment = async () => {
+    const orderId = Number(localStorage.getItem('orderId'))
+    if (!orderId) {
+      return
+    }
+
+    const { data: sessionId } = await orderApi.goToPayment(orderId)
+
+    return stripe?.redirectToCheckout({ sessionId })
+  }
+
   const renderOrder = () => {
     if (isLoading) {
       return <p>Loading...</p>
+    }
+
+    if (!data) {
+      return <p>Cart is empty. Add something.</p>
     }
 
     if (isError || !data) {
@@ -44,7 +61,7 @@ const Cart = () => {
           </h3>
 
           <div>
-            <Button href="/order/payment">Go to payment</Button>
+            <Button onClick={goToPayment}>Go to payment</Button>
           </div>
         </div>
       </div>

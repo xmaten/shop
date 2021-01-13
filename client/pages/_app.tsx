@@ -5,6 +5,8 @@ import { ReactQueryDevtools } from 'react-query/devtools'
 import { Hydrate } from 'react-query/hydration'
 import 'tailwindcss/tailwind.css'
 import '../styles/globals.css'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
 
 import { Navbar } from 'components/nav/Navbar'
 
@@ -14,6 +16,9 @@ type Props = {
 }
 
 const queryClient = new QueryClient()
+const stripePromise = loadStripe(
+  'pk_test_51I8oOgHriYKyqLYTz2FfWxQCfoxy5ZU7oR3JGXdJoc48f4QHg5TNTjiydtRLDSADyiN7BEHf6bF45cAxjc1IpsKM00UjC6YfvF',
+)
 
 const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
   return (
@@ -25,8 +30,10 @@ const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
           <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         </Head>
         <div>
-          <Navbar />
-          <Component {...pageProps} />
+          <Elements stripe={stripePromise}>
+            <Navbar />
+            <Component {...pageProps} />
+          </Elements>
         </div>
       </Hydrate>
     </QueryClientProvider>

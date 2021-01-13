@@ -26,4 +26,8 @@ export const orderApi = {
   async getOrder(orderId: number): Promise<AxiosResponse<Order>> {
     return httpClient().get(`/orders/${orderId}`)
   },
+
+  async goToPayment(orderId: number) {
+    return httpClient().post(`/orders/${orderId}/create-checkout-session`)
+  },
 }

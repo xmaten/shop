@@ -9,10 +9,13 @@ import { User } from 'src/entities/User'
 import { Product } from 'src/entities/Product'
 
 // FIXME: cant get key from env, when I pass key here it works as expected
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: '2020-08-27',
-  typescript: true,
-})
+const stripe = new Stripe(
+  'sk_test_51I8oOgHriYKyqLYTAfMNVaFnUIGGfEmEzq5efJhmw6i2IOViTsMJ55KIkhtJQ3rA4kTKjQLnDaBdThzBH0YCdYlF00ThJHo4CB',
+  {
+    apiVersion: '2020-08-27',
+    typescript: true,
+  },
+)
 
 const FRONTEND_DOMAIN = 'http://localhost:3000'
 
@@ -125,6 +128,10 @@ export class OrdersService {
       { relations: ['products'] },
     )
 
+    order.status = 'payment_started'
+
+    await order.save()
+
     const lineItems = order.products.map((product) => ({
       price_data: {
         currency: 'pln',
@@ -132,7 +139,7 @@ export class OrdersService {
           name: product.name,
           images: [product.image],
         },
-        unit_amount: product.price,
+        unit_amount: product.price * 100,
       },
       quantity: 1,
     }))

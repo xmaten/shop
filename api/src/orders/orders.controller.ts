@@ -59,7 +59,7 @@ export class OrdersController {
     return this.ordersService.getOrder(request, orderId)
   }
 
-  @Post(':orderId/create-payment-intent')
+  @Post(':orderId/create-checkout-session')
   @ApiCreatedResponse()
   async createCheckoutSession(
     @Param('orderId', new ParseIntPipe()) orderId: number,
