@@ -166,4 +166,16 @@ export class OrdersService {
 
     return order
   }
+
+  async getUserOrders(request: MyRequest) {
+    const userId = request.session.userId
+    if (!userId) {
+      throw new Error('Missing user')
+    }
+
+    return await Order.find({
+      where: { status: 'paid', user: { id: userId } },
+      relations: ['products'],
+    })
+  }
 }

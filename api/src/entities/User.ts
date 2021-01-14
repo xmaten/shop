@@ -17,7 +17,6 @@ export class User {
   @Column()
   email: string
 
-  @ApiProperty()
   @Column()
   password: string
 

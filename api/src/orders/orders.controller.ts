@@ -11,6 +11,7 @@ import {
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 
 import { MyRequest } from 'src/types'
+import { Order } from 'src/entities/Order'
 
 import { OrdersService } from './orders.service'
 import {
@@ -71,5 +72,11 @@ export class OrdersController {
   @ApiCreatedResponse()
   async finalizeOrder(@Param('orderId', new ParseIntPipe()) orderId: number) {
     return this.ordersService.finalizeOrder(orderId)
+  }
+
+  @Get('/')
+  @ApiCreatedResponse({ type: () => [Order] })
+  async getUserOrders(@Req() request: MyRequest) {
+    return this.ordersService.getUserOrders(request)
   }
 }
