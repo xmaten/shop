@@ -66,4 +66,10 @@ export class OrdersController {
   ) {
     return this.ordersService.createCheckoutSession(orderId)
   }
+
+  @Post(':orderId/finalize-order')
+  @ApiCreatedResponse()
+  async finalizeOrder(@Param('orderId', new ParseIntPipe()) orderId: number) {
+    return this.ordersService.finalizeOrder(orderId)
+  }
 }

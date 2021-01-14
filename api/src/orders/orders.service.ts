@@ -128,10 +128,6 @@ export class OrdersService {
       { relations: ['products'] },
     )
 
-    order.status = 'payment_started'
-
-    await order.save()
-
     const lineItems = order.products.map((product) => ({
       price_data: {
         currency: 'pln',
@@ -152,6 +148,22 @@ export class OrdersService {
       cancel_url: `${FRONTEND_DOMAIN}/order/cancel`,
     })
 
+    order.status = 'payment_started'
+
+    await order.save()
+
     return session.id
+  }
+
+  async finalizeOrder(orderId: number) {
+    const order = await Order.findOne(
+      { id: orderId },
+      { relations: ['products'] },
+    )
+
+    order.status = 'paid'
+    await order.save()
+
+    return order
   }
 }

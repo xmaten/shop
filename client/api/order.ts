@@ -30,4 +30,8 @@ export const orderApi = {
   async goToPayment(orderId: number) {
     return httpClient().post(`/orders/${orderId}/create-checkout-session`)
   },
+
+  async finalizeOrder(orderId: number) {
+    return httpClient().post(`/orders/${orderId}/finalize-order`)
+  },
 }
