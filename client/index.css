@@ -1,0 +1,10 @@
+.orders-masonry {
+    display: flex;
+    margin-left: -20px;
+    width: auto;
+}
+.orders-masonry__column {
+    padding-left: 20px;
+    background-clip: padding-box;
+}
+

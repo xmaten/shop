@@ -9,6 +9,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 
 import { Navbar } from 'components/nav/Navbar'
+import 'index.css'
 
 type Props = {
   Component: any

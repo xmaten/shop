@@ -34,4 +34,8 @@ export const orderApi = {
   async finalizeOrder(orderId: number) {
     return httpClient().post(`/orders/${orderId}/finalize-order`)
   },
+
+  async getAllUserOrders(): Promise<AxiosResponse<Order[]>> {
+    return httpClient().get(`/orders`)
+  },
 }

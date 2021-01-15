@@ -33,6 +33,10 @@ export const Navbar = () => {
             <a className="mr-10">Cart</a>
           </Link>
 
+          <Link href="/profile">
+            <a className="mr-10">Profile</a>
+          </Link>
+
           <button
             className="bg-blue-600 px-5 py-3 rounded-2xl hover:bg-blue-700 transition outline-none"
             onClick={() => logoutMutation.mutate()}
