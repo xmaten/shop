@@ -11,4 +11,10 @@ export class OrdersService {
       relations: ['products'],
     })
   }
+
+  async getOrder(orderId: number) {
+    return await Order.findOne(orderId, {
+      relations: ['products'],
+    })
+  }
 }
