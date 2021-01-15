@@ -20,14 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/pages/profile.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/admin/orders/orders.controller.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/admin/orders/orders.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/admin/orders/orders.service.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/api/order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/api/order.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/nav/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/nav/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/_app.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/_app.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/admin/admin.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/admin/admin.module.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +57,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/order" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/src/admin/orders" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -72,6 +69,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/api/src/admin/orders" />
       <recent name="$PROJECT_DIR$/api/src/order" />
       <recent name="$PROJECT_DIR$/api/src/user" />
     </key>
@@ -113,7 +111,7 @@
       <workItem from="1610634797990" duration="3207000" />
       <workItem from="1610720318382" duration="1032000" />
       <workItem from="1610721373878" duration="242000" />
-      <workItem from="1610721637426" duration="1459000" />
+      <workItem from="1610721637426" duration="1831000" />
     </task>
     <servers />
   </component>
