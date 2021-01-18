@@ -1,3 +1,5 @@
+import { Status } from 'utils/translateStatuses'
+
 import { Product } from './Product'
 
 export type NewOrder = {
@@ -12,7 +14,12 @@ export type ChangeOrderPayload = {
 export type Order = {
   id: number
   totalPrice: number
-  status: string
+  status: Status
   userId: number
   products: Product[]
+  user: {
+    fullName: string
+    email: string
+    phone: string
+  }
 }

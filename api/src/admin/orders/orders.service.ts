@@ -8,13 +8,13 @@ export class OrdersService {
 
   async getAllOrders() {
     return await Order.find({
-      relations: ['products'],
+      relations: ['products', 'user'],
     })
   }
 
   async getOrder(orderId: number) {
     return await Order.findOne(orderId, {
-      relations: ['products'],
+      relations: ['products', 'user'],
     })
   }
 }
