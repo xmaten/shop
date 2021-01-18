@@ -42,4 +42,8 @@ export const orderApi = {
   async getAllAdminOrders(): Promise<AxiosResponse<Order[]>> {
     return httpClient().get('/admin/orders')
   },
+
+  async getAdminOrder(orderId: number): Promise<AxiosResponse<Order>> {
+    return httpClient().get(`/admin/orders/${orderId}`)
+  },
 }

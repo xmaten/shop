@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { Order } from 'types/Order'
-import { translateStatuses } from '../../utils/translateStatuses'
+import { translateStatuses } from 'utils/translateStatuses'
 
 type Props = {
   order: Order
