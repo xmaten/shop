@@ -9,6 +9,7 @@ import { OrdersModule } from 'src/orders/orders.module'
 import { User } from 'src/entities/User'
 import { Product } from 'src/entities/Product'
 import { Order } from 'src/entities/Order'
+import { Category } from 'src/entities/Category'
 
 @Module({
   imports: [
@@ -20,7 +21,7 @@ import { Order } from 'src/entities/Order'
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
-      entities: [User, Product, Order],
+      entities: [User, Product, Order, Category],
       synchronize: true,
       logging: true,
     }),
