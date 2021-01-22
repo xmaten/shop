@@ -11,7 +11,6 @@ import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 import { Category } from 'src/entities/Category'
 
 import { CategoriesService } from './categories.service'
-import { Product } from '../../entities/Product'
 
 @ApiTags('Admin categories')
 @Controller('/admin/categories')

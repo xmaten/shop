@@ -6,6 +6,7 @@ import { AuthModule } from 'src/auth/auth.module'
 import { AdminModule } from 'src/admin/admin.module'
 import { ProductsModule } from 'src/products/products.module'
 import { OrdersModule } from 'src/orders/orders.module'
+import { CategoriesModule } from 'src/categories/categories.module'
 import { User } from 'src/entities/User'
 import { Product } from 'src/entities/Product'
 import { Order } from 'src/entities/Order'
@@ -29,6 +30,7 @@ import { Category } from 'src/entities/Category'
     AdminModule,
     ProductsModule,
     OrdersModule,
+    CategoriesModule,
   ],
   controllers: [],
   providers: [],
