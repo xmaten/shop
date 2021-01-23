@@ -3,6 +3,7 @@ import { Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 
 import { Product } from 'src/entities/Product'
+import { Direction, Field } from 'src/types'
 
 import { CreateProductDto } from './products.interface'
 
@@ -19,8 +20,10 @@ export class ProductsService {
     return createPayload
   }
 
-  async findAll() {
-    return await this.productsRepository.find()
+  async findAll(field: Field, direction: Direction) {
+    return await this.productsRepository.find({
+      order: { [field]: direction },
+    })
   }
 
   async findOne(id: number) {

@@ -1,9 +1,11 @@
-import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common'
+import { Controller, Get, Param, ParseIntPipe, Query } from '@nestjs/common'
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 
 import { Product } from 'src/entities/Product'
 
 import { ProductsService } from './products.service'
+
+import { Direction, Field } from 'src/types'
 
 @ApiTags('Products')
 @Controller('/products')
@@ -14,8 +16,11 @@ export class ProductsController {
   @ApiCreatedResponse({
     type: [Product],
   })
-  async getAll() {
-    return this.productsService.findAll()
+  async getAll(
+    @Query('field') field: Field,
+    @Query('direction') direction: Direction,
+  ) {
+    return this.productsService.findAll(field, direction)
   }
 
   @Get(':id')

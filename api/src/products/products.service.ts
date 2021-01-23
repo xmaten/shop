@@ -3,6 +3,7 @@ import { Repository, MoreThan } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 
 import { Product } from 'src/entities/Product'
+import { Direction, Field } from 'src/types'
 
 @Injectable()
 export class ProductsService {
@@ -11,8 +12,11 @@ export class ProductsService {
     private productsRepository: Repository<Product>,
   ) {}
 
-  async findAll() {
-    return await this.productsRepository.find({ where: { stock: MoreThan(0) } })
+  async findAll(field: Field, direction: Direction) {
+    return await this.productsRepository.find({
+      where: { stock: MoreThan(0) },
+      order: { [field]: direction },
+    })
   }
 
   async findOne(id: number) {
