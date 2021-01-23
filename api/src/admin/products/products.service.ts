@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import { Repository } from 'typeorm'
+import { getConnection, Repository } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 
 import { Product } from 'src/entities/Product'
@@ -20,10 +20,24 @@ export class ProductsService {
     return createPayload
   }
 
-  async findAll(field: Field, direction: Direction) {
-    return await this.productsRepository.find({
-      order: { [field]: direction },
-    })
+  async findAll(
+    field: Field = 'name',
+    direction: Direction = 'ASC',
+    priceMin?: number,
+    priceMax?: number,
+  ) {
+    const filterPriceMin = priceMin ? priceMin : 0
+    const filterPriceMax = priceMax ? priceMax : 9999999
+
+    return getConnection()
+      .getRepository(Product)
+      .createQueryBuilder('product')
+      .where(
+        'product.stock > 0 AND product.price >= :filterPriceMin AND product.price <= :filterPriceMax',
+        { filterPriceMin, filterPriceMax },
+      )
+      .orderBy(`product.${field}`, direction)
+      .getMany()
   }
 
   async findOne(id: number) {

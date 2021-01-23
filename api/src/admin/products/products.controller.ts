@@ -9,7 +9,7 @@ import {
   Put,
   Query,
 } from '@nestjs/common'
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
+import { ApiCreatedResponse, ApiQuery, ApiTags } from '@nestjs/swagger'
 
 import { Product } from 'src/entities/Product'
 import { Direction, Field } from 'src/types'
@@ -34,11 +34,33 @@ export class ProductsController {
   @ApiCreatedResponse({
     type: [Product],
   })
+  @ApiQuery({
+    name: 'field',
+    required: false,
+    type: String,
+  })
+  @ApiQuery({
+    name: 'direction',
+    required: false,
+    type: String,
+  })
+  @ApiQuery({
+    name: 'priceMin',
+    required: false,
+    type: Number,
+  })
+  @ApiQuery({
+    name: 'priceMax',
+    required: false,
+    type: Number,
+  })
   async getAll(
     @Query('field') field: Field,
     @Query('direction') direction: Direction,
+    @Query('priceMin') priceMin: number,
+    @Query('priceMax') priceMax: number,
   ) {
-    return this.productsService.findAll(field, direction)
+    return this.productsService.findAll(field, direction, priceMin, priceMax)
   }
 
   @Get(':id')
