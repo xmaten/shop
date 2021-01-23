@@ -20,13 +20,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/src/categories/categories.controller.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/categories/categories.module.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/src/categories/categories.service.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/src/admin/categories/category.interface.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/admin/admin.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/admin/admin.module.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/admin/categories/categories.controller.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/admin/categories/categories.controller.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/src/admin/categories/categories.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/admin/categories/categories.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/categories/categories.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/categories/categories.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/categories/categories.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/categories/categories.service.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,7 +118,8 @@
       <workItem from="1610721373878" duration="242000" />
       <workItem from="1610721637426" duration="2221000" />
       <workItem from="1610983489562" duration="2393000" />
-      <workItem from="1611327367862" duration="1499000" />
+      <workItem from="1611327367862" duration="2991000" />
+      <workItem from="1611392861725" duration="1076000" />
     </task>
     <servers />
   </component>

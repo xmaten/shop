@@ -4,6 +4,8 @@ import { Repository } from 'typeorm'
 
 import { Category } from 'src/entities/Category'
 
+import { CreateCategoryDto } from './category.interface'
+
 @Injectable()
 export class CategoriesService {
   constructor(
@@ -11,20 +13,18 @@ export class CategoriesService {
     private categoryRepository: Repository<Category>,
   ) {}
 
-  async create(name: string) {
-    await this.categoryRepository.insert({ name })
+  async create(createCategoryDto: CreateCategoryDto) {
+    const category = await this.categoryRepository.insert(createCategoryDto)
+
+    return category.raw.id
   }
 
   async findAll() {
-    await this.categoryRepository.find()
+    return await this.categoryRepository.find()
   }
 
   async findOne(id: number) {
     const category = await this.categoryRepository.findOne(id)
-
-    if (category) {
-      return null
-    }
 
     return category
   }

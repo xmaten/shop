@@ -11,6 +11,7 @@ import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 import { Category } from 'src/entities/Category'
 
 import { CategoriesService } from './categories.service'
+import { CreateCategoryDto } from './category.interface'
 
 @ApiTags('Admin categories')
 @Controller('/admin/categories')
@@ -21,8 +22,8 @@ export class CategoriesController {
   @ApiCreatedResponse({
     type: Category,
   })
-  async create(@Body() name: string) {
-    return this.categoriesService.create(name)
+  async create(@Body() createCategoryDto: CreateCategoryDto) {
+    return this.categoriesService.create(createCategoryDto)
   }
 
   @Get('/')
