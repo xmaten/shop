@@ -11,7 +11,7 @@ export class CreateProductDto {
   price: number
 
   @ApiProperty()
-  category: string
+  categoryId: number
 
   @ApiProperty()
   stock: number

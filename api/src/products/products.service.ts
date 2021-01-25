@@ -1,13 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import {
-  Repository,
-  MoreThan,
-  LessThan,
-  MoreThanOrEqual,
-  LessThanOrEqual,
-  getConnection,
-  getRepository,
-} from 'typeorm'
+import { Repository, getConnection } from 'typeorm'
 import { InjectRepository } from '@nestjs/typeorm'
 
 import { Product } from 'src/entities/Product'

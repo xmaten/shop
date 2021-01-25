@@ -1,5 +1,14 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm'
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  OneToOne,
+  JoinColumn,
+} from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
+
+import { Category } from './Category'
 
 @Entity()
 export class Product extends BaseEntity {
@@ -24,8 +33,9 @@ export class Product extends BaseEntity {
   price: number
 
   @ApiProperty()
-  @Column()
-  category: string
+  @OneToOne(() => Category)
+  @JoinColumn()
+  category: number
 
   @ApiProperty()
   @Column()
