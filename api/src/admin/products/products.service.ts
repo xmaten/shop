@@ -32,6 +32,7 @@ export class ProductsService {
     return getConnection()
       .getRepository(Product)
       .createQueryBuilder('product')
+      .leftJoinAndSelect('product.category', 'category')
       .where(
         'product.stock > 0 AND product.price >= :filterPriceMin AND product.price <= :filterPriceMax',
         { filterPriceMin, filterPriceMax },
@@ -41,7 +42,9 @@ export class ProductsService {
   }
 
   async findOne(id: number) {
-    const product = await this.productsRepository.findOne(id)
+    const product = await this.productsRepository.findOne(id, {
+      relations: ['category'],
+    })
 
     if (!product) {
       return null
