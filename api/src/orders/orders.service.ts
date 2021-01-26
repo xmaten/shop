@@ -38,7 +38,11 @@ export class OrdersService {
       id: userId,
     })
 
-    const data = await this.ordersRepository.insert({ status: 'created', user })
+    const data = await this.ordersRepository.insert({
+      status: 'created',
+      user,
+      updatedAt: new Date(),
+    })
 
     return {
       orderId: data.raw[0].id,
@@ -72,6 +76,7 @@ export class OrdersService {
 
     const productWithUpdatedStock = {
       ...product,
+      updatedAt: new Date(),
       stock: product.stock - 1,
     }
 
@@ -87,6 +92,7 @@ export class OrdersService {
       : product.price
 
     order.products = order.products ? [...order.products, product] : [product]
+    order.updatedAt = new Date()
 
     return await order.save()
   }
@@ -103,6 +109,7 @@ export class OrdersService {
     const productWithUpdatedStock = {
       ...product,
       stock: product.stock + 1,
+      updatedAt: new Date(),
     }
 
     await this.productsRepository.update(product.id, productWithUpdatedStock)
@@ -119,6 +126,8 @@ export class OrdersService {
     order.products = order.products.filter(
       (orderProduct) => orderProduct.id !== productId,
     )
+
+    order.updatedAt = new Date()
 
     return await order.save()
   }
@@ -150,6 +159,7 @@ export class OrdersService {
     })
 
     order.status = 'payment_started'
+    order.updatedAt = new Date()
 
     await order.save()
 
@@ -163,6 +173,7 @@ export class OrdersService {
     )
 
     order.status = 'paid'
+    order.updatedAt = new Date()
     await order.save()
 
     return order

@@ -5,6 +5,7 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Put,
 } from '@nestjs/common'
 import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
 
@@ -40,5 +41,16 @@ export class CategoriesController {
   })
   async getOneById(@Param('id', new ParseIntPipe()) id: number) {
     return this.categoriesService.findOne(id)
+  }
+
+  @Put(':id')
+  @ApiCreatedResponse({
+    type: Category,
+  })
+  async updateCategory(
+    @Param('id', new ParseIntPipe()) id: number,
+    @Body() createCategoryDto: CreateCategoryDto,
+  ) {
+    return this.categoriesService.updateCategory(id, createCategoryDto)
   }
 }

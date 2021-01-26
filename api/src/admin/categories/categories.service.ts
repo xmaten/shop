@@ -24,8 +24,21 @@ export class CategoriesService {
   }
 
   async findOne(id: number) {
+    return await this.categoryRepository.findOne(id)
+  }
+
+  async updateCategory(id: number, createCategoryDto: CreateCategoryDto) {
     const category = await this.categoryRepository.findOne(id)
 
-    return category
+    if (!category) {
+      return 'Wrong id'
+    }
+
+    const updatedCategory = {
+      ...createCategoryDto,
+      updatedAt: new Date(),
+    }
+
+    return await this.categoryRepository.update(id, updatedCategory)
   }
 }

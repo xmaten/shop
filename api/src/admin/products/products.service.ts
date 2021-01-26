@@ -66,7 +66,12 @@ export class ProductsService {
       return 'Wrong id'
     }
 
-    return await this.productsRepository.update(id, updatePayload)
+    const updatedProduct = {
+      ...updatePayload,
+      updatedAt: new Date(),
+    }
+
+    return await this.productsRepository.update(id, updatedProduct)
   }
 
   async deleteOne(id: number) {
