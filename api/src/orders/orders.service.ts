@@ -2,6 +2,7 @@ import { Injectable, Req } from '@nestjs/common'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import Stripe from 'stripe'
+import { paginate } from 'nestjs-typeorm-paginate'
 
 import { MyRequest } from 'src/types'
 import { Order } from 'src/entities/Order'
@@ -167,15 +168,24 @@ export class OrdersService {
     return order
   }
 
-  async getUserOrders(request: MyRequest) {
+  async getUserOrders(request: MyRequest, page = 1, limit = 10) {
     const userId = request.session.userId
     if (!userId) {
       throw new Error('Missing user')
     }
 
-    return await Order.find({
-      where: { status: 'paid', user: { id: userId } },
-      relations: ['products'],
-    })
+    return paginate<Order>(
+      this.ordersRepository,
+      { page, limit },
+      {
+        relations: ['products', 'user'],
+        where: {
+          status: 'paid',
+          user: {
+            id: userId,
+          },
+        },
+      },
+    )
   }
 }

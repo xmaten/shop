@@ -1,6 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger'
 
 import { Product } from 'src/entities/Product'
+import { Order } from 'src/entities/Order'
 
 export type MyRequest = Request & { session: any }
 
@@ -33,5 +34,16 @@ export class ProductResponse {
   meta: MetaResponse
 
   @ApiProperty()
-  links: LinksResponse
+  links?: LinksResponse
+}
+
+export class OrderResponse {
+  @ApiProperty()
+  items: Order[]
+
+  @ApiProperty()
+  meta: MetaResponse
+
+  @ApiProperty()
+  links?: LinksResponse
 }

@@ -7,10 +7,11 @@ import {
   Post,
   Req,
   Get,
+  Query,
 } from '@nestjs/common'
-import { ApiCreatedResponse, ApiTags } from '@nestjs/swagger'
+import { ApiCreatedResponse, ApiQuery, ApiTags } from '@nestjs/swagger'
 
-import { MyRequest } from 'src/types'
+import { MyRequest, OrderResponse } from 'src/types'
 import { Order } from 'src/entities/Order'
 
 import { OrdersService } from './orders.service'
@@ -75,8 +76,20 @@ export class OrdersController {
   }
 
   @Get('/')
-  @ApiCreatedResponse({ type: () => [Order] })
-  async getUserOrders(@Req() request: MyRequest) {
-    return this.ordersService.getUserOrders(request)
+  @ApiCreatedResponse({ type: () => OrderResponse })
+  @ApiQuery({
+    name: 'page',
+    type: Number,
+  })
+  @ApiQuery({
+    name: 'limit',
+    type: Number,
+  })
+  async getUserOrders(
+    @Req() request: MyRequest,
+    @Query('page') page: number,
+    @Query('limit') limit: number,
+  ) {
+    return this.ordersService.getUserOrders(request, page, limit)
   }
 }
