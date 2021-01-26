@@ -12,7 +12,7 @@ import {
 import { ApiCreatedResponse, ApiQuery, ApiTags } from '@nestjs/swagger'
 
 import { Product } from 'src/entities/Product'
-import { Direction, Field } from 'src/types'
+import { Direction, Field, ProductResponse } from 'src/types'
 
 import { CreateProductDto } from './products.interface'
 import { ProductsService } from './products.service'
@@ -32,7 +32,7 @@ export class ProductsController {
 
   @Get('/')
   @ApiCreatedResponse({
-    type: [Product],
+    type: ProductResponse,
   })
   @ApiQuery({
     name: 'field',
@@ -54,13 +54,30 @@ export class ProductsController {
     required: false,
     type: Number,
   })
+  @ApiQuery({
+    name: 'page',
+    type: Number,
+  })
+  @ApiQuery({
+    name: 'limit',
+    type: Number,
+  })
   async getAll(
     @Query('field') field: Field,
     @Query('direction') direction: Direction,
     @Query('priceMin') priceMin: number,
     @Query('priceMax') priceMax: number,
+    @Query('page') page: number,
+    @Query('limit') limit: number,
   ) {
-    return this.productsService.findAll(field, direction, priceMin, priceMax)
+    return this.productsService.findAll(
+      field,
+      direction,
+      page,
+      limit,
+      priceMin,
+      priceMax,
+    )
   }
 
   @Get(':id')

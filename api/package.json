@@ -31,6 +31,7 @@
     "connect-redis": "^5.0.0",
     "express-session": "^1.17.1",
     "ioredis": "^4.19.2",
+    "nestjs-typeorm-paginate": "^2.3.0",
     "pg": "^8.4.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
