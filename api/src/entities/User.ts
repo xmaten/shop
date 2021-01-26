@@ -31,4 +31,12 @@ export class User {
   @ApiProperty()
   @OneToMany(() => Order, (order) => order.user)
   orders: Order[]
+
+  @ApiProperty()
+  @Column({ type: 'timestamp', default: new Date() })
+  createdAt: Date
+
+  @ApiProperty()
+  @Column({ type: 'timestamp', default: new Date() })
+  updatedAt: Date
 }

@@ -40,4 +40,12 @@ export class Product extends BaseEntity {
   @ApiProperty()
   @Column()
   stock: number
+
+  @ApiProperty()
+  @Column({ type: 'timestamp', default: new Date() })
+  createdAt: Date
+
+  @ApiProperty()
+  @Column({ type: 'timestamp', default: new Date() })
+  updatedAt: Date
 }
