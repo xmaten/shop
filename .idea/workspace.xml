@@ -20,15 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/types/utility.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/api/categories.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/admin/categories/all.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/admin/categories/create.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/pages/admin/categories/edit/[id].tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/types/Categories.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/api/order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/api/order.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/nav/AdminSidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/nav/AdminSidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/admin/orders/all.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/admin/orders/all.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/admin/products/all.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/admin/products/all.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/profile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/profile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/Order.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/Order.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/types/Product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/types/Product.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +122,7 @@
       <workItem from="1611490738472" duration="2000" />
       <workItem from="1611578284632" duration="4229000" />
       <workItem from="1611672930081" duration="3839000" />
-      <workItem from="1611758847810" duration="2848000" />
+      <workItem from="1611758847810" duration="3897000" />
     </task>
     <servers />
   </component>
