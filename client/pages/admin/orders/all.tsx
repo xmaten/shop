@@ -19,7 +19,7 @@ const AllOrders = () => {
 
     return (
       <>
-        {data?.data.map((order) => (
+        {data?.data.items.map((order) => (
           <div key={order.id}>
             <OrderListItem order={order} />
           </div>

@@ -33,7 +33,7 @@ const Profile = () => {
         columnClassName="orders-masonry__column"
         className="orders-masonry"
       >
-        {response.map((order) => (
+        {response.items.map((order) => (
           <div key={order.id} className="p-5 shadow-md">
             {order.products.map((product) => (
               <div key={product.id} className="mb-8">

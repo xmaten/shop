@@ -1,6 +1,7 @@
 import { Status } from 'utils/translateStatuses'
 
 import { Product } from './Product'
+import { LinksResponse, MetaResponse } from './utility'
 
 export type NewOrder = {
   orderId: number
@@ -22,4 +23,10 @@ export type Order = {
     email: string
     phone: string
   }
+}
+
+export type OrderResponse = {
+  items: Order[]
+  meta: MetaResponse
+  links: LinksResponse
 }

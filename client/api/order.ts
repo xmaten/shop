@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 
-import { ChangeOrderPayload, NewOrder, Order } from 'types/Order'
+import { ChangeOrderPayload, NewOrder, Order, OrderResponse } from 'types/Order'
 
 import { httpClient } from './httpClient'
 
@@ -35,11 +35,11 @@ export const orderApi = {
     return httpClient().post(`/orders/${orderId}/finalize-order`)
   },
 
-  async getAllUserOrders(): Promise<AxiosResponse<Order[]>> {
+  async getAllUserOrders(): Promise<AxiosResponse<OrderResponse>> {
     return httpClient().get('/orders')
   },
 
-  async getAllAdminOrders(): Promise<AxiosResponse<Order[]>> {
+  async getAllAdminOrders(): Promise<AxiosResponse<OrderResponse>> {
     return httpClient().get('/admin/orders')
   },
 

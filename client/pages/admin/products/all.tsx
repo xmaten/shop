@@ -1,4 +1,5 @@
 import { useQuery } from 'react-query'
+import Link from 'next/link'
 
 import { ProductListItemAdmin } from 'components/products/ProductListItemAdmin'
 import { ProductListHeader } from 'components/products/ProductListHeader'
@@ -29,6 +30,9 @@ const AllProducts = () => {
   return (
     <AdminWrapper>
       <div className="container mx-auto max-w-xxl pt-10">
+        <Link href="/admin/products/create">
+          <a className="mt-5 mb-10 mr-10 font-bold block text-right">Create new product</a>
+        </Link>
         <ProductListHeader />
         {renderProductsResponse()}
       </div>

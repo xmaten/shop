@@ -7,12 +7,12 @@ export const AdminSidebar = () => {
       label: 'All products',
     },
     {
-      link: '/admin/products/create',
-      label: 'Create product',
-    },
-    {
       link: '/admin/orders/all',
       label: 'Orders',
+    },
+    {
+      link: '/admin/categories/all',
+      label: 'Categories',
     },
   ]
   return (
