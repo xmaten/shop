@@ -18,7 +18,7 @@ const Home = () => {
 
     return (
       <>
-        {data?.map((product) => (
+        {data?.items.map((product) => (
           <ProductCard key={product.name} product={product} />
         ))}
       </>

@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 
-import { Product, UpdateProductPayload } from 'types/Product'
+import { Product, UpdateProductPayload, ProductsResponse } from 'types/Product'
 
 import { httpClient } from './httpClient'
 
@@ -17,7 +17,7 @@ export const productApi = {
     return httpClient().delete(`/admin/products/${productId}`)
   },
 
-  async getAllAdminProducts(): Promise<AxiosResponse<Product[]>> {
+  async getAllAdminProducts(): Promise<AxiosResponse<ProductsResponse>> {
     return httpClient().get('/admin/products')
   },
 
@@ -25,7 +25,7 @@ export const productApi = {
     return httpClient().get(`/admin/products/${productId}`)
   },
 
-  async getAllClientProducts(): Promise<AxiosResponse<Product[]>> {
+  async getAllClientProducts(): Promise<AxiosResponse<ProductsResponse>> {
     return httpClient().get('/products')
   },
 

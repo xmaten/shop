@@ -19,7 +19,7 @@ const AllProducts = () => {
 
     return (
       <>
-        {data?.data.map((product) => (
+        {data?.data.items.map((product) => (
           <ProductListItemAdmin key={product.name} product={product} />
         ))}
       </>
