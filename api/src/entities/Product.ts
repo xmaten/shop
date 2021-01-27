@@ -5,6 +5,8 @@ import {
   BaseEntity,
   OneToOne,
   JoinColumn,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
 
@@ -42,10 +44,10 @@ export class Product extends BaseEntity {
   stock: number
 
   @ApiProperty()
-  @Column({ type: 'timestamp', default: new Date() })
+  @CreateDateColumn()
   createdAt: Date
 
   @ApiProperty()
-  @Column({ type: 'timestamp', default: new Date() })
+  @UpdateDateColumn()
   updatedAt: Date
 }

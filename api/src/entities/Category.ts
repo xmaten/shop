@@ -1,4 +1,11 @@
-import { Entity, PrimaryGeneratedColumn, BaseEntity, Column } from 'typeorm'
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  Column,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
 
 @Entity()
@@ -12,10 +19,10 @@ export class Category extends BaseEntity {
   name: string
 
   @ApiProperty()
-  @Column({ type: 'timestamp', default: new Date() })
+  @CreateDateColumn()
   createdAt: Date
 
   @ApiProperty()
-  @Column({ type: 'timestamp', default: new Date() })
+  @UpdateDateColumn()
   updatedAt: Date
 }

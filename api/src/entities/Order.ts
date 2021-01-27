@@ -6,6 +6,8 @@ import {
   JoinTable,
   ManyToOne,
   BaseEntity,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
 
@@ -36,10 +38,10 @@ export class Order extends BaseEntity {
   status: string
 
   @ApiProperty()
-  @Column({ type: 'timestamp', default: new Date() })
+  @CreateDateColumn()
   createdAt: Date
 
   @ApiProperty()
-  @Column({ type: 'timestamp', default: new Date() })
+  @UpdateDateColumn()
   updatedAt: Date
 }

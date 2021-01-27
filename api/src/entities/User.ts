@@ -1,4 +1,11 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm'
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToMany,
+  CreateDateColumn,
+  UpdateDateColumn,
+} from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
 
 import { Order } from './Order'
@@ -33,10 +40,10 @@ export class User {
   orders: Order[]
 
   @ApiProperty()
-  @Column({ type: 'timestamp', default: new Date() })
+  @CreateDateColumn()
   createdAt: Date
 
   @ApiProperty()
-  @Column({ type: 'timestamp', default: new Date() })
+  @UpdateDateColumn()
   updatedAt: Date
 }
