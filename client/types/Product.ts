@@ -10,9 +10,19 @@ export type Product = {
   image: string
 }
 
+export type NewProduct = {
+  id: number
+  name: string
+  description: string
+  price: number
+  categoryId: string
+  stock: number
+  image: string
+}
+
 export type UpdateProductPayload = {
   productId: number
-  formData: Product
+  formData: NewProduct
 }
 
 export type ProductsResponse = {

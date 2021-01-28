@@ -16,7 +16,12 @@ export class ProductsService {
   ) {}
 
   async create(createPayload: CreateProductDto) {
-    await this.productsRepository.insert(createPayload)
+    const payload = {
+      ...createPayload,
+      categoryId: Number(createPayload.categoryId),
+    }
+
+    await this.productsRepository.insert(payload)
 
     return createPayload
   }
@@ -35,7 +40,7 @@ export class ProductsService {
     const queryBuilder = this.productsRepository.createQueryBuilder('product')
     queryBuilder.leftJoinAndSelect('product.category', 'category')
     queryBuilder.where(
-      'product.stock > 0 AND product.price >= :filterPriceMin AND product.price <= :filterPriceMax',
+      'product.price >= :filterPriceMin AND product.price <= :filterPriceMax',
       { filterPriceMin, filterPriceMax },
     )
     queryBuilder.orderBy(`product.${field}`, direction)

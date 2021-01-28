@@ -1,25 +1,32 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { useMutation } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 import Router from 'next/router'
 
 import { Input } from 'components/Input'
 import { Button } from 'components/Button'
 import { Textarea } from 'components/Textarea'
 import { AdminWrapper } from 'components/layout/AdminWrapper'
+import { Dropdown } from 'components/Dropdown'
 import { useIsAdmin } from 'utils/hooks/useIsAdmin'
-import { Product } from 'types/Product'
+import { NewProduct, Product } from 'types/Product'
 import { productApi } from 'api/product'
+import { categoriesApi } from 'api/categories'
+import { Category } from 'types/Categories'
+
+const parseCategoriesForDropdown = (categories: Category[] | undefined) =>
+  categories ? categories.map((category) => ({ label: category.name, value: category.id.toString() })) : []
 
 const CreateProduct = () => {
   useIsAdmin()
+  const { data } = useQuery('categories', categoriesApi.getAllCategories)
 
-  const { register, handleSubmit, errors } = useForm<Product>({
+  const { register, handleSubmit, errors } = useForm<NewProduct>({
     defaultValues: {
       name: '',
       description: '',
       price: 0,
-      category: '',
+      categoryId: '',
       stock: 0,
       image: '',
     },
@@ -66,13 +73,14 @@ const CreateProduct = () => {
             error={errors.image}
           />
 
-          <Input
+          <Dropdown
+            name="categoryId"
+            label="Category"
+            error={errors.categoryId}
+            options={parseCategoriesForDropdown(data?.data)}
             ref={register({
               required: 'This field is required',
             })}
-            name="category"
-            label="Category"
-            error={errors.category}
           />
 
           <Input
