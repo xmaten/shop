@@ -6,6 +6,7 @@ import { SortAndFilter } from 'types/Product'
 
 import { Dropdown } from './Dropdown'
 import { Button } from './Button'
+import { Input } from './Input'
 
 const SORT_OPTIONS = [
   {
@@ -45,7 +46,7 @@ export const FilterSortSidebar = () => {
   })
 
   const onSubmit = handleSubmit((data: SortAndFilter) => {
-    router.push(`?field=${data.field}&direction=${data.direction}`)
+    router.push(`?field=${data.field}&direction=${data.direction}&priceMin=${data.priceMin}&priceMax=${data.priceMax}`)
   })
 
   return (
@@ -60,6 +61,10 @@ export const FilterSortSidebar = () => {
           error={errors.direction}
           ref={register()}
         />
+
+        <Input ref={register()} name="priceMin" label="Price min" error={errors.priceMin} type="number" />
+
+        <Input ref={register()} name="priceMax" label="Price max" error={errors.priceMax} type="number" />
 
         <Button type="submit">Search</Button>
       </form>

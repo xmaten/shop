@@ -34,4 +34,6 @@ export type ProductsResponse = {
 export type SortAndFilter = {
   field?: 'name' | 'category' | 'price'
   direction?: 'ASC' | 'DESC'
+  priceMin?: number
+  priceMax?: number
 }

@@ -26,9 +26,11 @@ export const productApi = {
   },
 
   async getAllClientProducts(sortAndFilter: SortAndFilter): Promise<AxiosResponse<ProductsResponse>> {
-    const { field, direction } = sortAndFilter
+    const { field, direction, priceMin, priceMax } = sortAndFilter
 
-    return httpClient().get(`/products?field=${field || 'name'}&direction=${direction || 'ASC'}`)
+    return httpClient().get(
+      `/products?field=${field || 'name'}&direction=${direction || 'ASC'}&priceMin=${priceMin}&priceMax=${priceMax}`,
+    )
   },
 
   async getOneClientProduct(productId: number): Promise<AxiosResponse<Product>> {

@@ -4,12 +4,12 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import { Hydrate } from 'react-query/hydration'
 import 'tailwindcss/tailwind.css'
-import '../styles/globals.css'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 
-import { Navbar } from 'components/nav/Navbar'
 import 'index.css'
+import 'styles/globals.css'
+import { Navbar } from 'components/nav/Navbar'
 
 type Props = {
   Component: any
