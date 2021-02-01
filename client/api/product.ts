@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 
-import { Product, UpdateProductPayload, ProductsResponse } from 'types/Product'
+import { Product, UpdateProductPayload, ProductsResponse, SortAndFilter } from 'types/Product'
 
 import { httpClient } from './httpClient'
 
@@ -25,8 +25,10 @@ export const productApi = {
     return httpClient().get(`/admin/products/${productId}`)
   },
 
-  async getAllClientProducts(): Promise<AxiosResponse<ProductsResponse>> {
-    return httpClient().get('/products')
+  async getAllClientProducts(sortAndFilter: SortAndFilter): Promise<AxiosResponse<ProductsResponse>> {
+    const { field, direction } = sortAndFilter
+
+    return httpClient().get(`/products?field=${field || 'name'}&direction=${direction || 'ASC'}`)
   },
 
   async getOneClientProduct(productId: number): Promise<AxiosResponse<Product>> {

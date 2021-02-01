@@ -30,3 +30,8 @@ export type ProductsResponse = {
   meta: MetaResponse
   links: LinksResponse
 }
+
+export type SortAndFilter = {
+  field?: 'name' | 'category' | 'price'
+  direction?: 'ASC' | 'DESC'
+}
