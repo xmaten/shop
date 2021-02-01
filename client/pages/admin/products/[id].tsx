@@ -56,7 +56,7 @@ const ProductPage = () => {
           </div>
 
           <div className="flex">
-            <p className="w-1/12">{product.category}</p>
+            <p className="w-1/12">{product.category?.name || '-'}</p>
             <p className="w-1/12">{product.price}</p>
             <p className="w-1/12">{product.stock}</p>
           </div>

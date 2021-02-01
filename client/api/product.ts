@@ -29,11 +29,13 @@ export const productApi = {
     const { field, direction, priceMin, priceMax } = sortAndFilter
 
     return httpClient().get(
-      `/products?field=${field || 'name'}&direction=${direction || 'ASC'}&priceMin=${priceMin}&priceMax=${priceMax}`,
+      `/products?field=${field || 'name'}&direction=${direction || 'ASC'}&priceMin=${priceMin || 0}&priceMax=${
+        priceMax || 999999
+      }`,
     )
   },
 
   async getOneClientProduct(productId: number): Promise<AxiosResponse<Product>> {
-    return httpClient().get(`/admin/products/${productId}`)
+    return httpClient().get(`/products/${productId}`)
   },
 }

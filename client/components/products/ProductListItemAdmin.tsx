@@ -21,7 +21,7 @@ export const ProductListItemAdmin: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className={itemClasses}>
-          <p>{product.category}</p>
+          <p>{product.category?.name || '-'}</p>
         </div>
 
         <div className={itemClasses}>

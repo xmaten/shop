@@ -1,25 +1,23 @@
 import { useRouter } from 'next/router'
-import { GetStaticProps } from 'next'
+import { GetServerSideProps } from 'next'
 import { QueryClient, useQuery } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 
 import { productApi } from 'api/product'
-import { Product } from 'types/Product'
 import { AddProductToOrder } from 'components/order/AddProductToOrder'
 
 const ProductPage = () => {
   const router = useRouter()
   const productId = Number(router.query.id)
-  const { data: product, isLoading, isError } = useQuery([`clientProduct-${productId}`, productId], () =>
-    getProduct(productId),
-  )
+  const { data, isLoading, isError } = useQuery([`clientProduct-${productId}`, productId], () => getProduct(productId))
 
   const renderProductsResponse = () => {
+    console.log(data)
     if (isLoading) {
       return <p>Loading...</p>
     }
 
-    if (isError || !product) {
+    if (isError || !data) {
       return <p>There was an error. Please try again later.</p>
     }
 
@@ -27,16 +25,16 @@ const ProductPage = () => {
       <>
         <div className="flex">
           <div className="w-1/4">
-            <img src={product.image} alt={product.name} />
+            <img src={data.image} alt={data.name} />
           </div>
 
           <div className="ml-5">
             <div>
-              <p className="font-bold text-3xl mb-1">{product.name}</p>
+              <p className="font-bold text-3xl mb-1">{data.name}</p>
             </div>
 
             <div>
-              <p>{product.description}</p>
+              <p>{data.description}</p>
             </div>
 
             <div className="mt-10">
@@ -52,8 +50,8 @@ const ProductPage = () => {
           </div>
 
           <div className="flex">
-            <p className="w-1/12">{product.category}</p>
-            <p className="w-1/12">{product.price}</p>
+            <p className="w-1/12">{data.category?.name || '-'}</p>
+            <p className="w-1/12">{data.price}</p>
           </div>
         </div>
       </>
@@ -69,18 +67,7 @@ const getProduct = async (id: number) => {
   return data?.data
 }
 
-export async function getStaticPaths() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products`)
-  const products = await res.json()
-
-  const paths = products.map((product: Product) => ({
-    params: { id: product.id.toString() },
-  }))
-
-  return { paths, fallback: false }
-}
-
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   const queryClient = new QueryClient()
   const productId = Number(params?.id) || -1
 

@@ -12,10 +12,7 @@ import { useIsAdmin } from 'utils/hooks/useIsAdmin'
 import { NewProduct, Product } from 'types/Product'
 import { productApi } from 'api/product'
 import { categoriesApi } from 'api/categories'
-import { Category } from 'types/Categories'
-
-const parseCategoriesForDropdown = (categories: Category[] | undefined) =>
-  categories ? categories.map((category) => ({ label: category.name, value: category.id.toString() })) : []
+import { parseCategoriesForDropdown } from 'utils/parseCategoriesForDropdown'
 
 const CreateProduct = () => {
   useIsAdmin()

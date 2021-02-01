@@ -5,7 +5,10 @@ export type Product = {
   name: string
   description: string
   price: number
-  category: string
+  category: {
+    id: number
+    name: string
+  } | null
   stock: number
   image: string
 }
@@ -15,7 +18,7 @@ export type NewProduct = {
   name: string
   description: string
   price: number
-  categoryId: string
+  categoryId: number
   stock: number
   image: string
 }

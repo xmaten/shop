@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useMutation, useQuery } from 'react-query'
 import { useForm } from 'react-hook-form'
@@ -8,8 +9,10 @@ import { Button } from 'components/Button'
 import { Input } from 'components/Input'
 import { Textarea } from 'components/Textarea'
 import { productApi } from 'api/product'
-import { Product } from 'types/Product'
-import { useEffect } from 'react'
+import { NewProduct } from 'types/Product'
+import { Dropdown } from 'components/Dropdown'
+import { parseCategoriesForDropdown } from 'utils/parseCategoriesForDropdown'
+import { categoriesApi } from 'api/categories'
 
 const ProductPage = () => {
   const router = useRouter()
@@ -17,17 +20,18 @@ const ProductPage = () => {
   const { data, isLoading, isError } = useQuery([`adminProduct-${productId}`, productId], () =>
     productApi.getOneAdminProduct(productId),
   )
+  const { data: categories } = useQuery('categories', categoriesApi.getAllCategories)
 
   const defaultValues = {
     name: data?.data.name || '',
     description: data?.data.description || '',
     price: data?.data.price || 0,
-    category: data?.data.category || '',
+    categoryId: data?.data.category?.id || 0,
     stock: data?.data.stock || 0,
     image: data?.data.image || '',
   }
 
-  const { register, handleSubmit, errors, reset } = useForm<Product>({
+  const { register, handleSubmit, errors, reset } = useForm<NewProduct>({
     defaultValues,
   })
 
@@ -43,7 +47,7 @@ const ProductPage = () => {
     },
   })
 
-  const onSubmit = handleSubmit((formData: Product) => {
+  const onSubmit = handleSubmit((formData: NewProduct) => {
     if (data?.data.id) {
       editProductMutation.mutate({ formData, productId: data?.data.id })
     }
@@ -87,13 +91,14 @@ const ProductPage = () => {
           error={errors.image}
         />
 
-        <Input
+        <Dropdown
+          name="categoryId"
+          label="Category"
+          error={errors.categoryId}
+          options={parseCategoriesForDropdown(categories?.data)}
           ref={register({
             required: 'This field is required',
           })}
-          name="category"
-          label="Category"
-          error={errors.category}
         />
 
         <Input
