@@ -23,11 +23,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cfab87dd-f07c-4d5b-a1de-9d4b7feb0683" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/components/AdminFilterSortTopBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/src/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/api/product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/api/product.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/pages/admin/products/all.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/pages/admin/products/all.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/entities/Category.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/entities/Category.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/src/entities/Product.ts" beforeDir="false" afterPath="$PROJECT_DIR$/api/src/entities/Product.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +126,7 @@
       <workItem from="1611846192817" duration="4255000" />
       <workItem from="1611901755343" duration="3783000" />
       <workItem from="1612163207321" duration="8100000" />
-      <workItem from="1612246304008" duration="872000" />
+      <workItem from="1612246304008" duration="1580000" />
     </task>
     <servers />
   </component>

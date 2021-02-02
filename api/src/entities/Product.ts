@@ -3,10 +3,11 @@ import {
   Column,
   PrimaryGeneratedColumn,
   BaseEntity,
-  OneToOne,
   JoinColumn,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
+  ManyToOne,
 } from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
 
@@ -35,8 +36,7 @@ export class Product extends BaseEntity {
   price: number
 
   @ApiProperty()
-  @OneToOne(() => Category)
-  @JoinColumn()
+  @ManyToOne(() => Category, (category) => category.id)
   category: number
 
   @ApiProperty()

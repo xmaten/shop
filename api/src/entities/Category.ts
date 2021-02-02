@@ -5,8 +5,12 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  ManyToOne,
+  OneToMany,
 } from 'typeorm'
 import { ApiProperty } from '@nestjs/swagger'
+
+import { Product } from './Product'
 
 @Entity()
 export class Category extends BaseEntity {
@@ -25,4 +29,8 @@ export class Category extends BaseEntity {
   @ApiProperty()
   @UpdateDateColumn()
   updatedAt: Date
+
+  @ApiProperty()
+  @OneToMany(() => Product, (product) => product.category)
+  products: Product[]
 }
