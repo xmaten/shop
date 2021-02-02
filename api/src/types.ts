@@ -9,7 +9,7 @@ export type MyResponse = Response & { clearCookie: any; send: any }
 
 export type Direction = 'ASC' | 'DESC'
 
-export type Field = 'name' | 'price' | 'category'
+export type Field = 'name' | 'price' | 'category' | 'stock'
 
 type MetaResponse = {
   totalItems: number

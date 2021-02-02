@@ -1,13 +1,18 @@
 import { useQuery } from 'react-query'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
 
 import { ProductListItemAdmin } from 'components/products/ProductListItemAdmin'
 import { ProductListHeader } from 'components/products/ProductListHeader'
 import { AdminWrapper } from 'components/layout/AdminWrapper'
+import { AdminFilterSortTopBar } from 'components/AdminFilterSortTopBar'
 import { productApi } from 'api/product'
 
 const AllProducts = () => {
-  const { data, isLoading, isError } = useQuery('adminProducts', productApi.getAllAdminProducts)
+  const router = useRouter()
+  const { data, isLoading, isError } = useQuery(['adminProducts', router.query], () =>
+    productApi.getAllAdminProducts(router.query),
+  )
 
   const renderProductsResponse = () => {
     if (isLoading) {
@@ -33,6 +38,7 @@ const AllProducts = () => {
         <Link href="/admin/products/create">
           <a className="mt-5 mb-10 mr-10 font-bold block text-right">Create new product</a>
         </Link>
+        <AdminFilterSortTopBar />
         <ProductListHeader />
         {renderProductsResponse()}
       </div>

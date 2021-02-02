@@ -17,8 +17,14 @@ export const productApi = {
     return httpClient().delete(`/admin/products/${productId}`)
   },
 
-  async getAllAdminProducts(): Promise<AxiosResponse<ProductsResponse>> {
-    return httpClient().get('/admin/products')
+  async getAllAdminProducts(sortAndFilter: SortAndFilter): Promise<AxiosResponse<ProductsResponse>> {
+    const { field, direction, priceMin, priceMax } = sortAndFilter
+
+    return httpClient().get(
+      `/admin/products?field=${field || 'name'}&direction=${direction || 'ASC'}&priceMin=${priceMin || 0}&priceMax=${
+        priceMax || 999999
+      }`,
+    )
   },
 
   async getOneAdminProduct(productId: number): Promise<AxiosResponse<Product>> {
