@@ -46,7 +46,10 @@ export const FilterSortSidebar = () => {
   })
 
   const onSubmit = handleSubmit((data: SortAndFilter) => {
-    router.push(`?field=${data.field}&direction=${data.direction}&priceMin=${data.priceMin}&priceMax=${data.priceMax}`)
+    const page = router.query.page || 1
+    router.push(
+      `?field=${data.field}&direction=${data.direction}&priceMin=${data.priceMin}&priceMax=${data.priceMax}&page=${page}`,
+    )
   })
 
   return (

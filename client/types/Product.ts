@@ -39,4 +39,5 @@ export type SortAndFilter = {
   direction?: 'ASC' | 'DESC'
   priceMin?: number
   priceMax?: number
+  page?: number
 }

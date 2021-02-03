@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios'
 
 import { ChangeOrderPayload, NewOrder, Order, OrderResponse } from 'types/Order'
+import { SortAndFilter } from 'types/Product'
 
 import { httpClient } from './httpClient'
 
@@ -35,12 +36,16 @@ export const orderApi = {
     return httpClient().post(`/orders/${orderId}/finalize-order`)
   },
 
-  async getAllUserOrders(): Promise<AxiosResponse<OrderResponse>> {
-    return httpClient().get('/orders')
+  async getAllUserOrders(sortAndFilter: SortAndFilter): Promise<AxiosResponse<OrderResponse>> {
+    const { page } = sortAndFilter
+
+    return httpClient().get(`/orders?page=${page}&limit=10`)
   },
 
-  async getAllAdminOrders(): Promise<AxiosResponse<OrderResponse>> {
-    return httpClient().get('/admin/orders')
+  async getAllAdminOrders(sortAndFilter: SortAndFilter): Promise<AxiosResponse<OrderResponse>> {
+    const { page } = sortAndFilter
+
+    return httpClient().get(`/admin/orders?page=${page}&limit=10`)
   },
 
   async getAdminOrder(orderId: number): Promise<AxiosResponse<Order>> {

@@ -56,7 +56,7 @@ export const AdminFilterSortTopBar = () => {
   })
 
   return (
-    <form onSubmit={onSubmit} className="flex justify-between items-center mb-5" style={{ width: '100%' }}>
+    <form onSubmit={onSubmit} className="flex justify-between items-center mb-5 w-full">
       <div className="w-1/5 mx-2">
         <Dropdown name="field" options={SORT_OPTIONS} label="Sort by:" error={errors.field} ref={register()} />
       </div>

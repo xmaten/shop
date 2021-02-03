@@ -2,6 +2,8 @@ import { useQuery } from 'react-query'
 import Masonry from 'react-masonry-css'
 
 import { orderApi } from 'api/order'
+import { Pagination } from '../components/Pagination'
+import { useRouter } from 'next/router'
 
 const breakpointColumnsObj = {
   default: 3,
@@ -10,7 +12,8 @@ const breakpointColumnsObj = {
 }
 
 const Profile = () => {
-  const { data, isLoading, isError } = useQuery('orders', orderApi.getAllUserOrders)
+  const router = useRouter()
+  const { data, isLoading, isError } = useQuery(['orders', router.query], () => orderApi.getAllUserOrders(router.query))
 
   const generateOrdersList = () => {
     if (isLoading) {
@@ -55,6 +58,8 @@ const Profile = () => {
       <h1>Your orders</h1>
 
       {generateOrdersList()}
+
+      <Pagination totalPages={data?.data.meta.totalPages || 0} currentPage={data?.data.meta.currentPage || 0} />
     </div>
   )
 }

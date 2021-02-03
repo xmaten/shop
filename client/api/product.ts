@@ -18,12 +18,12 @@ export const productApi = {
   },
 
   async getAllAdminProducts(sortAndFilter: SortAndFilter): Promise<AxiosResponse<ProductsResponse>> {
-    const { field, direction, priceMin, priceMax } = sortAndFilter
+    const { field, direction, priceMin, priceMax, page } = sortAndFilter
 
     return httpClient().get(
       `/admin/products?field=${field || 'name'}&direction=${direction || 'ASC'}&priceMin=${priceMin || 0}&priceMax=${
         priceMax || 999999
-      }`,
+      }&page=${page}&limit=10`,
     )
   },
 
@@ -32,12 +32,12 @@ export const productApi = {
   },
 
   async getAllClientProducts(sortAndFilter: SortAndFilter): Promise<AxiosResponse<ProductsResponse>> {
-    const { field, direction, priceMin, priceMax } = sortAndFilter
+    const { field, direction, priceMin, priceMax, page } = sortAndFilter
 
     return httpClient().get(
       `/products?field=${field || 'name'}&direction=${direction || 'ASC'}&priceMin=${priceMin || 0}&priceMax=${
         priceMax || 999999
-      }`,
+      }&page=${page}&limit=12`,
     )
   },
 

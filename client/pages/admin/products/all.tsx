@@ -6,6 +6,7 @@ import { ProductListItemAdmin } from 'components/products/ProductListItemAdmin'
 import { ProductListHeader } from 'components/products/ProductListHeader'
 import { AdminWrapper } from 'components/layout/AdminWrapper'
 import { AdminFilterSortTopBar } from 'components/AdminFilterSortTopBar'
+import { Pagination } from 'components/Pagination'
 import { productApi } from 'api/product'
 
 const AllProducts = () => {
@@ -19,15 +20,18 @@ const AllProducts = () => {
       return <p>Loading...</p>
     }
 
-    if (isError) {
+    if (isError || !data) {
       return <p>There was an error. Please try again later.</p>
     }
 
+    const { items, meta } = data.data
+
     return (
       <>
-        {data?.data.items.map((product) => (
+        {items.map((product) => (
           <ProductListItemAdmin key={product.name} product={product} />
         ))}
+        <Pagination totalPages={meta.totalPages || 0} currentPage={meta.currentPage} />
       </>
     )
   }

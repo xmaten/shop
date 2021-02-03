@@ -1,12 +1,13 @@
 import { QueryClient, useQuery } from 'react-query'
 import { dehydrate } from 'react-query/hydration'
 import { GetServerSideProps } from 'next'
+import { useRouter } from 'next/router'
 
 import { productApi } from 'api/product'
 import { ProductCard } from 'components/products/ProductCard'
 import { FilterSortSidebar } from 'components/FilterSortSidebar'
+import { Pagination } from 'components/Pagination'
 import { SortAndFilter } from 'types/Product'
-import { useRouter } from 'next/router'
 
 const Home = () => {
   const router = useRouter()
@@ -33,7 +34,12 @@ const Home = () => {
   return (
     <div className="flex">
       <FilterSortSidebar />
-      <div className="w-3/4 mx-auto my-10 grid grid-cols-3 gap-6">{renderProductsResponse()}</div>
+      <div className="flex flex-col w-full">
+        <div className="w-3/4 mx-auto my-10 grid grid-cols-3 gap-6">{renderProductsResponse()}</div>
+        <div className="w-3/4 mx-auto my-10">
+          <Pagination totalPages={data?.meta.totalPages || 0} currentPage={data?.meta.currentPage || 0} />
+        </div>
+      </div>
     </div>
   )
 }
